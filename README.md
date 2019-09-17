@@ -1,12 +1,12 @@
-Backend development best practices
+Arka uçta örnek yöntemler
 ==================================
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [N Commandments](#n-commandments)
-- [General points on guidelines](#general-points-on-guidelines)
+- [N Emir](#n-emir)
+- [Buradaki yönergeler için genel noktalar](#buradaki-y%C3%B6nergeler-i%C3%A7in-genel-noktalar)
 - [Development environment setup in README.md](#development-environment-setup-in-readmemd)
 - [Data persistence](#data-persistence)
   - [General considerations](#general-considerations)
@@ -52,18 +52,18 @@ Backend development best practices
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# N Commandments
+# N Emir
 
-1. README.md in the root of the repo is the docs
-2. Single command run
-3. Single command deploy
-4. Repeatable and re-creatable builds
-5. Build artifacts bundle a ["Bill of Materials"](#bill-of-materials)
-6. Use [UTC as the timezone](http://yellerapp.com/posts/2015-01-12-the-worst-server-setup-you-can-make.html) all around
+1. Ana dizindeki README.md dosyası bu kütüphanenin ana belgesidir
+2. Tek komutla çalıştır
+3. Tek komutla inşa etmek
+4. Tekrarlanabilir ve yeniden yaratılabilir yapılar inşa etmek
+5. Yazılım inşaa sonuçları ["Bir Yığın Malzemeden"](#bill-of-materials) oluşur
+6. Her zaman [UTC saat dilimi](http://yellerapp.com/posts/2015-01-12-the-worst-server-setup-you-can-make.html) kullan
 
-# General points on guidelines
+# Buradaki yönergeler için genel noktalar
 
-We do not want to limit ourselves to certain tech stacks or frameworks. Different problems require different solutions, and hence these guidelines are valid for various backend architectures.
+Kendimizi belirli teknoloji yığınları veya çerçevelerle sınırlamak istemiyoruz. Farklı problemler farklı çözümler gerektirir ve bu nedenle bu yönergeler her çeşit arka uç mimarisi için geçerlidir.
 
 # Development environment setup in README.md
 
