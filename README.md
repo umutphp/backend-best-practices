@@ -33,7 +33,7 @@ Arka uçta örnek yöntemler
   - [Denetim Logları](#denetim-loglar%C4%B1)
   - [Şüpheli Eylem Kısıtlama ve/veya engelleme](#%C5%9F%C3%BCpheli-eylem-k%C4%B1s%C4%B1tlama-veveya-engelleme)
   - [Anonim Veriler](#anonim-veriler)
-  - [Temporary file storage](#temporary-file-storage)
+  - [Geçici dosya depolama](#ge%C3%A7ici-dosya-depolama)
   - [Dedicated vs Shared server environment](#dedicated-vs-shared-server-environment)
 - [Application monitoring](#application-monitoring)
   - [Status page](#status-page)
