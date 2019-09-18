@@ -121,9 +121,9 @@ Anahtarları ile erişilebilen değerleri veya bazen de anahtar/değer çiftleri
 * Cassandra
 * Redis
 
-#### Graph database
+#### Grafik veritabanları
 
-General graph databases store nodes and edges of a graph, providing index-free lookups of the neighbors of any node. For applications where graph-like queries like shortest path or diameter are crucial. Specialized graph databases also exist for storing e.g. [RDF triples](https://en.wikipedia.org/wiki/Resource_Description_Framework).
+Genel grafik veritabanları, bir grafiğin düğümlerini ve kenarlarını depolar ve herhangi bir düğümün komşularının indekssiz görünümlerini sağlar. En kısa yol veya çap gibi grafik benzeri sorguların çok önemli olduğu uygulamalar için kullanılabilir. Özelleşmiş grafik veritabanları veri kaydı için de kullanılabilir, örneğin. [RDF triples](https://en.wikipedia.org/wiki/Resource_Description_Framework).
 
 # Environments
 
