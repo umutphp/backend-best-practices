@@ -27,9 +27,9 @@ Arka uçta örnek yöntemler
 - [Güvenlik](#g%C3%BCvenlik)
   - [Docker](#docker)
   - [Kimlik bilgileri](#kimlik-bilgileri)
-  - [Gizli bilgiler](#gizli-bilgiler)
-  - [Login Throttling](#login-throttling)
-  - [User Password Storage](#user-password-storage)
+  - [Gizli veriler](#gizli-veriler)
+  - [Giriş Kısıtlama](#giri%C5%9F-k%C4%B1s%C4%B1tlama)
+  - [Kullanıcı Şifreleri Depolanması](#kullan%C4%B1c%C4%B1-%C5%9Fifreleri-depolanmas%C4%B1)
   - [Audit Log](#audit-log)
   - [Suspicious Action Throttling and/or blocking](#suspicious-action-throttling-andor-blocking)
   - [Anonymized Data](#anonymized-data)
@@ -186,30 +186,31 @@ Kabul edilebilir genel güvenlik kuralları şöyle olabilir:
 
 Asla kimlik bilgilerini hiçbir zaman genel ağ üzerinden şifrelenmemiş şekilde göndermeyin. Her zaman şifreleme kullanın (örneğin HTTPS, SSL vb.).
 
-## Gizli bilgiler
+## Gizli veriler
 
 Sürüm kontrol sistemlerinde gizli olması gereken bilgileri (şifreler, SSH anahtarları vb.) asla saklamayın! Orada olduklarını unutmak çok kolaydır ve proje kaynağı birçok yere (geliştirici makineler, geliştirme test sunucuları vb.) yüklenebilir; bu da tehlikeye atılma riskini gereksiz yere artırır. Ayrıca, sürüm kontrol sistemleri, dosya izinlerinin üzerine yazma konusunda çok kötü bir özelliğe sahiptir, bu nedenle, yapılandırma dosyası izinlerinizi güvence altına alsanız bile, bir sonraki kaynağı kontrol ettiğinizde izinler varsayılan olarak okunabilir ya da varsayılanın üzerine yazılabilir.
 
 Muhtemelen gizli verileri yönetmenin en kolay yolu, onları ihtiyaç duyan sunuculardaki ayrı bir dosyaya koymak ve sürüm kontrolü tarafından yoksaymaktır. Örneğin sürüm kontrolünde bir “.sample” dosyası tutulabilir, o dosyaya gerçekte neyin olması gerektiğini göstermek için sahte değerler koyulabilir. Bazı durumlarda, ana konfigürasyondan ayrı bir konfigürasyon dosyası eklemek kolay değildir. Bu durumda, ortam değişkenlerini kullanmayı veya yapılandırma dosyasını sürüm kontrolündeki bir şablondan  oluşturmayı düşünün.
 
-## Login Throttling
+## Giriş Kısıtlama
 
-Place limits on the amount of login attempts allowed per client per unit of time. Lock a user account for specific time after a given number of failed attempts (e.g. lock for 5 minutes after 20 failed login attempts).
-The aim of these measures is make online brute-force attacks against usernames/passwords infeasible.
+Belli bir süre içinde kişi başına izin verilen giriş denemesi miktarına sınırlamalar koyun. Belirli sayıda başarısız denemeden sonra bir kullanıcı hesabını belirli bir süre için kilitleyin. (örneğin, 20 hatalı giriş denemesi sonrasında 5 dakika hesabı kitleyebilirsiniz).
 
-## User Password Storage
+Bu önlemlerin amacı, kullanıcı adlarına/şifrelerine karşı online kaba kuvvet saldırılarını olanaksız kılmaktır.
 
-> Never EVER store passwords in plaintext!
+## Kullanıcı Şifreleri Depolanması
 
-Never store passwords in reversible encrypted form, unless absolutely required by the application / system. Here is a good article about what and what not to do: https://crackstation.net/hashing-security.htm
+> Asla şifreleri düz metinler olarak tutmayın!
 
-If you do need to be able to obtain plaintext passwords from the database, here are some suggestions to follow.
+Eğer uygulama / sistem tarafından gerekli değilse, şifreleri asla geri çevirilebilir şifreleme yöntemleri ile kaydetmeyin. Konu ile ilgili güzel bir makale: https://crackstation.net/hashing-security.htm
 
-If passwords won't be converted back to plaintext often (e.g. special procedure is required), keep decryption keys away from the application that accesses the database regularly.
+Veritabanından düz metin parolaları elde etmeniz gerekiyorsa, takip etmeniz gereken bazı öneriler şöyledir.
 
-If passwords still need to be regularly decrypted, separate the decryption functionality from the main application as much as possible—e.g. a separate server accepts requests to decrypt a password, but enforces a higher level of control, like throttling, authorization, etc.
+Şifreler sık sık tekrar tekrar düz metne dönüştürülmezse (örneğin özel prosedür gerekiyorsa), şifre çözme anahtarlarını veritabanına düzenli olarak erişen uygulamadan uzak tutun.
 
-Whenever possible (it should be in a great majority of cases), store passwords using a good one-way hash with a good random salt. And, no, SHA-1 is not a good choice for a hashing function in this context. Hash functions that are designed with passwords in mind are deliberately slower, which makes offline brute-force attacks more time consuming, hence less feasible. See this post for more details: http://security.stackexchange.com/questions/211/how-to-securely-hash-passwords/31846#31846
+Şifrelerin hala düzenli olarak şifrelerinin çözülmesi gerekiyorsa, şifre çözme işlevini ana uygulamadan mümkün olduğu kadar ayırın (örneğin, ayrı bir sunucu bir şifrenin şifresini çözme isteklerini kabul eder, azaltma, yetkilendirme, vb. gibi daha yüksek bir kontrol düzeyi uygular).
+
+Mümkün olduğunda (vakaların büyük çoğunluğunda olması gerekir), şifreleri iyi bir rastgele değere sahip iyi bir tek yönlü şifreleme kullanarak depolayın. Ve kesinlikle diyebiliriz ki, SHA-1 bu bağlamda bir şifreleme işlevi için iyi bir seçim değildir. Parolalar göz önünde bulundurularak tasarlanan şifreleme işlevler kasıtlı olarak daha yavaştır, bu da çevrimdışı kaba kuvvet saldırılarını daha fazla zaman alan ve dolayısıyla daha az uygulanabilir kılar. Daha detaylı bilgi için: http://security.stackexchange.com/questions/211/how-to-securely-hash-passwords/31846#31846
 
 ## Audit Log
 
