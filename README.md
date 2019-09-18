@@ -99,24 +99,24 @@ Bu bölüm, kalıcı depolama çözümünün türünü seçmek için bazı kıla
 
 ### RDBMS
 
-Pick a relational database system such as PostgreSQL when data and transaction integrity is a major concern or when lots of data analysis is required. The [ACID compliance](https://en.wikipedia.org/wiki/ACID), aggregation and transformation functions of the RDBMS will help.
+Veri ve işlem bütünlüğü büyük bir gereksinim olduğunda veya çok sayıda veri analizi işlemi gerektiğinde PostgreSQL gibi ilişkisel bir veritabanı sistemi seçin. RDBMS seçeneklerinin [ACID uyumluluk](https://en.wikipedia.org/wiki/ACID), birleştirme ve dönüşüm fonksiyonları kararınızda yardımcı olacaktır.
 
 ### NoSQL
 
-Pick a NoSQL database when you expect to scale horizontally and when you don't require ACID. Pick a system that fits your model.
+Yatay ölçeklemeyi beklediğinizde ve ACID kuralları gerekmediğinde bir NoSQL veritabanı seçin. Tabiki veri modelinize uygun bir sistem seçin.
 
-#### Document storage
+#### Belge tabanlı depolama çözümleri
 
-Stores documents that can be easily addressed and searched for by content or by inclusion in a collection. This is made possible because the database understands the storage format. Use for just that: storing large numbers of structured documents. Notable examples:
+İçeriğe göre veya koleksiyona dahil edilerek kolayca adreslenebilen ve aranabilen belgeleri saklar. Bu veritabanı depolama formatını anladığı için mümkün olabiliyor. Sadece çok sayıda yapılandırılmış belgenin saklanması için kullanın. Dikkate değer örnekler:
 
 * CouchDB
 * ElasticSearch
 
-> Note that since 9.4, PostgreSQL can also be used to store JSON natively.
+> 9.4 sürümünden sonra PostgreSQL'in de JSON desteğine sahip olduğu için bu başlıkta değerlendirilebilir.
 
-#### Key-value store
+#### Anahtar-değer depolama çözümleri
 
-Stores values, or sometimes groups of key-value pairs, accessible by key. Considers the values to be simply blobs, so does not provide the query capabilities of document stores. Scalable to immense sizes. Notable examples:
+Anahtarları ile erişilebilen değerleri veya bazen de anahtar/değer çiftlerinin gruplarını saklar. Değerleri basitçe blob olarak kabul eder, bu nedenle belge depolarının sorgulama yeteneklerini sağlamaz. Büyük boyutlara ölçeklenebilir. Dikkate değer örnekler:
 
 * Cassandra
 * Redis
