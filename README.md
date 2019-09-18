@@ -31,7 +31,7 @@ Arka uçta örnek yöntemler
   - [Giriş Kısıtlama](#giri%C5%9F-k%C4%B1s%C4%B1tlama)
   - [Kullanıcı Şifreleri Depolanması](#kullan%C4%B1c%C4%B1-%C5%9Fifreleri-depolanmas%C4%B1)
   - [Denetim Logları](#denetim-loglar%C4%B1)
-  - [Suspicious Action Throttling and/or blocking](#suspicious-action-throttling-andor-blocking)
+  - [Şüpheli Eylem Kısıtlama ve/veya engelleme](#%C5%9F%C3%BCpheli-eylem-k%C4%B1s%C4%B1tlama-veveya-engelleme)
   - [Anonymized Data](#anonymized-data)
   - [Temporary file storage](#temporary-file-storage)
   - [Dedicated vs Shared server environment](#dedicated-vs-shared-server-environment)
@@ -226,11 +226,12 @@ Günlük, basit bir metin dosyası olabilir veya bir veritabanında saklanabilir
 
 Denetim günlüğü normal uygulama günlüğünün bir parçası olabilir, ancak burada vurgulanan şey, yalnızca belirli bir eylemin gerçekleştirilip gerçekleştirilmediğini yapan ve kimin yaptığını günlüğe kaydetmektir. Mümkünse, denetim günlüğü kurcalamaya karşı korumalı, örn. yalnızca özel bir günlük kaydı işlemi veya kullanıcı tarafından erişilebilir ama doğrudan uygulama tarafından erişilebilir olmamalıdır.
 
-## Suspicious Action Throttling and/or blocking
+## Şüpheli Eylem Kısıtlama ve/veya engelleme
 
-This can be seen as a generalization of the Login Throttling, this time introducing similar mechanics for arbitrary actions that are deemed "suspicious" within the context of the application. For example, an ERP system which allows normal users access to a substantial amount of information, but expects users to be concerned only with a small subset of that information, may limit attempts to access larger than expected datasets too quickly. E.g. prevent users from downloading list of all customers, if users are supposed to work on one or two customers at a time. Note that this is different from limiting access completely—users are still allowed to retrieve information about any customer, just not all of them at once. Depending on the system, throttling might not be enough—e.g. when one invokes an action on all resources with a single request. Then blocking might be required. Note the difference between making 1000 requests in 10 seconds to retrieve full customer information, one customer at a time, and making a single request to retrieve that information at once.
+Bu, Login Throttling'in genelleştirilmesi olarak görülebilir, bu böl
+m uygulama bağlamında "şüpheli" kabul edilen keyfi eylemler için benzer mekanizmaları anlatıyor. Örneğin, normal kullanıcıların önemli miktarda bilgiye erişmesine izin veren, ancak kullanıcıların yalnızca bu bilgilerin küçük bir alt kümesiyle ilgilenmelerini bekleyen bir ERP sistemi, beklenen veri setlerinden çok daha hızlı veri girişimlerini sınırlayabilir. Örneğin, Kullanıcıların aynı anda bir veya iki müşteride çalışması gerekiyorsa, kullanıcıların tüm müşterilerin listesini indirmelerini engelleyin. Bunun, erişimi tamamen sınırlamaktan farklı olduğunu unutmayın; kullanıcıların herhangi bir müşteri hakkında bilgi almalarına izin verilir ama aynı anda bütün müşterilerin değil. Sisteme bağlı olarak, kısıtlama yeterli olmayabilir - öreğin. bir kişi tüm kaynaklar üzerinde tek bir istekle işlem başlattığında. O zaman tamamen kısıtlama gerekli olabilir. Tam müşteri bilgilerini almak için bir kerede bir müşteri olmak üzere 10 saniyede 1000 istek yapmak ile ve bu bilgileri bir kerede almak için tek bir istek yapmak arasında farkı not edin.
 
-What is suspicious here depends strongly on the expected use of the application. E.g. in one system, deleting 10000 records might be completely legitimate action, but not so in an another one.
+Örneğin, bir sistemde 10000 kayıt silmek tamamen meşru bir işlem olabilir, ancak diğerinde de olmayabilir.
 
 ## Anonymized Data
 
