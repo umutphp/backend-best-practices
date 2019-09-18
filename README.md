@@ -127,33 +127,33 @@ Genel grafik veritabanları, bir grafiğin düğümlerini ve kenarlarını depol
 
 # Environments
 
-This section describes the environments you should have, at a minimum. It might sound like a lot, [but there is a purpose for each one](http://futurice.com/blog/five-environments-you-cannot-develop-without).
+Bu bölüm en az kaç geliştirme ortamına sahip olmanız gerektiğini açıklamaya çalışıyor. Başlangıçta size çok gelebilir [ama hepsinin bir amacı var](http://futurice.com/blog/five-environments-you-cannot-develop-without).
 
-- [Local development](#local-development-environment)
-- [Continuous integration](#continuous-integration-environment)
-- [Testing](#testing-environment)
-- [Staging](#staging-environment)
-- [Production](#production-environment)
+- [Lokal geliştirme](#lokal-geliştirme-ortamı)
+- [CI ortamı](#ci-ortamı)
+- [Test ortamı](#test-ortamı)
+- [Canlı öncesi (Staging) ortamı](#canlı-oncesi-staging-ortamı)
+- [Canlı](#canlı)
 
-## Local development environment
+## Lokal geliştirme ortamı
 
-This is your local development environment. You probably should not have a shared external development environment. Instead, you should work to make it possible to run the entire system locally, by stubbing or mocking third-party services as needed.
+Bu sizin kendi geliştirme ortamınızdır. Muhtemelen paylaşılan bir dış geliştirme ortamına sahip olmamalısınız. Bunun yerine, tüm sistemin yerel olarak çalıştırılmasını mümkün kılmak için, gerekli üçüncü taraf araçların taklitlerini veya sahtelerini kullanarak çalışmanız gerekir.
 
-## Continuous integration environment
+## CI ortamı
 
-CI is (among other things) for making sure that your software builds and automated tests pass after every change.
+CI (diğer ortamların dışında), yazılımınızın derlenmiş hallerinin çalıştığını ve otomatik testlerin her değişiklikten sonra başarı ile geçilmesini sağlamak için kurulan ortamdır.
 
-## Testing environment
+## Test ortamı
 
-This is a shared environment where code is deployed to as often as possible, preferably every time code is committed to the mainline branch. It can be broken from time to time, especially in the active development phase. It is an important canary environment and is as similar to production as possible. Any external integrations are set up to use staging-level versions of other services.
+Bu, kodun olabildiğince sık dağıtıldığı, tercihen her zaman kodun ana geliştirme dalına bağlı olduğu ortak bir ortamdır. Özellikle aktif gelişim aşamasında, zaman zaman bozulabilir. Bu önemli bir (canary environment )kanarya ortamıdır ve canlı ortama mümkün olduğu kadar benzemelidir. Kullanılan bir harici servislerin en az "staging" seviyesinde sürümlerinin kurulu olması gerekir.
 
-## Staging environment
+## Canlı öncesi (Staging) ortamı
 
-Staging is set up exactly like production. No changes to the production environment happen before having been rehearsed here first. Any mysterious production issues can be debugged here.
+Canlı öncesi (prova, staging) tam olarak canlı gibi yapılandırılmalıdır. Hiç bir değişiklik .ilk önce bu ortamda prova edilmeden üretim ortamına gönderilemez. Gizemli (canlı ortamda ortaya çıkan) herhangi bir sorunun burada hata ayıklaması yapılabilir.
 
-## Production environment
+## Canlı
 
-The big iron. Logged, monitored, cleaned up periodically, squared away and secured.
+İşlemmiş büyük demir parçası. Uygun seviyede log yapılan, devamlı gözlemlenen, periyodik olarak temizlenen, her türlü sorundan uzaklaştırılmaya çalışılmış ve emniyete alınmaya çalışılmış bir ortam.
 
 # Bill of Materials
 
