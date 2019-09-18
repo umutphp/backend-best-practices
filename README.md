@@ -30,7 +30,7 @@ Arka uçta örnek yöntemler
   - [Gizli veriler](#gizli-veriler)
   - [Giriş Kısıtlama](#giri%C5%9F-k%C4%B1s%C4%B1tlama)
   - [Kullanıcı Şifreleri Depolanması](#kullan%C4%B1c%C4%B1-%C5%9Fifreleri-depolanmas%C4%B1)
-  - [Audit Log](#audit-log)
+  - [Denetim Logları](#denetim-loglar%C4%B1)
   - [Suspicious Action Throttling and/or blocking](#suspicious-action-throttling-andor-blocking)
   - [Anonymized Data](#anonymized-data)
   - [Temporary file storage](#temporary-file-storage)
@@ -212,9 +212,9 @@ Veritabanından düz metin parolaları elde etmeniz gerekiyorsa, takip etmeniz g
 
 Mümkün olduğunda (vakaların büyük çoğunluğunda olması gerekir), şifreleri iyi bir rastgele değere sahip iyi bir tek yönlü şifreleme kullanarak depolayın. Ve kesinlikle diyebiliriz ki, SHA-1 bu bağlamda bir şifreleme işlevi için iyi bir seçim değildir. Parolalar göz önünde bulundurularak tasarlanan şifreleme işlevler kasıtlı olarak daha yavaştır, bu da çevrimdışı kaba kuvvet saldırılarını daha fazla zaman alan ve dolayısıyla daha az uygulanabilir kılar. Daha detaylı bilgi için: http://security.stackexchange.com/questions/211/how-to-securely-hash-passwords/31846#31846
 
-## Audit Log
+## Denetim Logları
 
-For applications handling sensitive data, especially where certain users are allowed a relatively wide access or control, it's good to maintain some kind of audit logging—storing a sequence of actions / events that took place in the system, together with the event/source originator (user, automation job, etc). This can be, e.g:
+Hassas verileri işleyen uygulamalarda, özellikle belirli kullanıcıların nispeten geniş bir erişime veya denetime izin verildiği yerlerde, bir tür denetim logları tutmak iyi olur - sistemde gerçekleşen bir dizi eylem/olayı olay/kaynak başlatıcı ile birlikte depolamak iyidir. (kullanıcı, otomasyon işleri, vb). Örneğin:
 
     2012-09-13 03:00:05 Job "daily_job" performed action "delete old items".
     2012-09-13 12:47:23 User "admin_user" performed action "delete item 123".
@@ -222,9 +222,9 @@ For applications handling sensitive data, especially where certain users are all
     2012-09-13 13:02:11 User "sneaky_user" performed action "view confidential page 567".
     ...
 
-The log may be a simple text file or stored in a database. At least these three items are good to have: an exact timestamp, the action/event originator (who did this), and the actual action/event (what was done). The exact actions to be logged depend on what is important for the application itself, of course.
+Günlük, basit bir metin dosyası olabilir veya bir veritabanında saklanabilir. En azından bu üç öğeye sahip olmak iyidir: kesin bir zaman damgası, eylem/olay yaratıcısı (bunu yapan kişi) ve fiili eylem/olay (ne yapıldığı). Günlüğe kaydedilecek kesin işlemler elbette uygulamanın kendisi için neyin önemli olduğuna bağlıdır.
 
-The audit log may be a part of the normal application log, but the emphasis here is on logging who did what and not only that a certain action was performed. If possible, the audit log should be made tamper-proof, e.g. only be accessible by a dedicated logging process or user and not directly by the application.
+Denetim günlüğü normal uygulama günlüğünün bir parçası olabilir, ancak burada vurgulanan şey, yalnızca belirli bir eylemin gerçekleştirilip gerçekleştirilmediğini yapan ve kimin yaptığını günlüğe kaydetmektir. Mümkünse, denetim günlüğü kurcalamaya karşı korumalı, örn. yalnızca özel bir günlük kaydı işlemi veya kullanıcı tarafından erişilebilir ama doğrudan uygulama tarafından erişilebilir olmamalıdır.
 
 ## Suspicious Action Throttling and/or blocking
 
