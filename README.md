@@ -73,20 +73,19 @@ Kurulum işlemini mümkün olduğunca otomatize etmeye çalışın. Örneğin, [
 
 Geliştirme ortamının ilgili tüm parçalarını ve bağımlılıklarını kalıcı olarak saklamayı düşünün. Eğer ortamlarınızı Docker ile inşaa edebiliyorsanız, bunu gerçekleştirmek için [docker export](http://docs.docker.com/reference/commandline/cli/#export) kullanabilirsiniz.
 
-# Data persistence
+# Veriyi kalıcı olarak depolama
+## Genel değerlendirmeler
 
-## General considerations
+Kullandığınız veri deplolama çözümünden bağımsız olarak aklınızda tutmanız gereken bazı değerlendirmeler:
 
-Independent of the persistence solution your project uses, there are general considerations that you should follow:
+* Çalıştığına emin olduğunız yedekler tutun
+* Bir ortamdan diğerine veri kopyalabilmenizi sağlayan betikler ve araçlara sahip olun, örneğin oluşan bir hatayı tekrarlamak için canlıdan canlı öncesi ortamlara (stage vs.)
+* Kalıcı deplolama sistemlerinin gerekli güncellemelerini yapmak için bir planınız olsun (veritabanı sunucusu güvenlik güncellemeleri vs.)
+* Dikey ölçekleme yaparken planınız olsun
+* Veri yapısı değişiklikleri için bir planınız olsun
+* Kalıcı veri çözümünüzü sürekli izleyebildiğiniz çalışan bir gözleme yapınız olsun
 
-* Have backups that are verified to work
-* Have scripts or other tooling for copying persistent data from one env to another, e.g. from prod to staging in order to debug something
-* Have plans in place for rolling out updates to the persistence solution (e.g. database server security updates)
-* Have plans in place for scaling up the persistence solution
-* Have plans or tooling for managing schema changes
-* Have monitoring in place to verify health of the persistence solution
-
-## SaaS, cloud-hosted or self-hosted?
+## SaaS, bulut ya da kendi sunucunuz?
 
 An important choice regarding any solution is where to run it.
 
