@@ -233,15 +233,15 @@ m uygulama bağlamında "şüpheli" kabul edilen keyfi eylemler için benzer mek
 
 Örneğin, bir sistemde 10000 kayıt silmek tamamen meşru bir işlem olabilir, ancak diğerinde de olmayabilir.
 
-## Anonymized Data
+## Anonim Veriler
 
-Whenever large datasets are exported to third parties, data should be anonymized as much as possible, given the intended use of the data. For example, if a third party service will provide general statistical analysis on a customer database, it probably does not need to know the names, addresses or other personal information for individual customers. Even a generic customer ID number might be too revealing, depending on the data set. Take a look at this article: http://arstechnica.com/tech-policy/2009/09/your-secrets-live-online-in-databases-of-ruin/.
+Ne zaman büyük veri setleri üçüncü şahıslara ihraç edildiğinde ve verilerin kullanım amacı göz önüne alındığında veriler mümkün olduğunca anonimleştirilmelidir. Örneğin, bir üçüncü taraf hizmeti bir müşteri veritabanında genel istatistiksel analiz sağlayacaksa, muhtemelen bireysel müşterilerin isimlerini, adreslerini veya diğer kişisel bilgilerini bilmesi gerekmez. Genel müşteri kimlik numarası bile, veri kümesine bağlı olarak çok açık olabilir. Bu yazıya bir göz atabilirsiniz: http://arstechnica.com/tech-policy/2009/09/your-secrets-live-online-in-databases-of-ruin/.
 
-Avoid logging personally identifiable information, for example user’s name.
+Kullanıcı adı gibi kişisel olarak tanımlanabilecek bilgileri loglamaktan kaçının.
 
-If your logs contain sensitive information,  make sure you know how logs are protected and where they are located also in the case of cloud hosted log management systems.
+Loglarınız hassas bilgiler içeriyorsa, loglarınızın nasıl korunduğunu ve bulutta barındırılan log yönetim sistemleri durumunda da nerede olduklarını bildiğinizden emin olun.
 
-If you must log sensitive information try hashing before logging so you can identify the same entity between different parts of the processing.
+Hassas bilgileri günlüğe kaydetmeniz gerekiyorsa, günlüğe kaydetmeden önce şifrelemeyi deneyin böylece işlemin farklı bölümleri arasında aynı varlığı tanımlayabilirsiniz.
 
 ## Temporary file storage
 
