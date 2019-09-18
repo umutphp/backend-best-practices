@@ -65,13 +65,13 @@ Arka uçta örnek yöntemler
 
 Kendimizi belirli teknoloji yığınları veya çerçevelerle sınırlamak istemiyoruz. Farklı problemler farklı çözümler gerektirir ve bu nedenle bu yönergeler her çeşit arka uç mimarisi için geçerlidir.
 
-# Development environment setup in README.md
+# Geliştirme ortamını README.md dosyasında belgeleyin
 
-Document all the parts of the development/server environment. Strive to use the same setup and versions on all environments, starting from developer laptops, and ending with the actual production environment. This includes the database, application server, proxy server (nginx, Apache, ...), SDK version(s), gems/libraries/modules.
+Geliştirme/sunucu ortamının tüm bölümlerini belgeleyin. Aynı kurulum ve sürümleri tüm ortamlarda, geliştirici dizüstü bilgisayarlarından başlayarak ve canlı ortamına kadar kullanmaya çalışın. Bu veritabanını, uygulama sunucusunu, proxy sunucusunu (nginx, Apache, ...), SDK sürümlerini, gemleri/kütüphaneleri/modülleri içerir.
 
-Automate the setup process as much as possible. For example, [Docker Compose](https://docs.docker.com/compose/) could be used both in production and development to set up a complete environment, where [Dockerfiles](https://docs.docker.com/articles/dockerfile_best-practices/) fetch all parts of the software, and contain the necessary scripting to setup the environment and all the parts of it. Consider using archived copies of the installers, in case upstream packages later become unavailable. A minimum precaution is to keep a SHA-1 checksums of the packages, and to make sure that the checksum matches when the packages are installed.
+Kurulum işlemini mümkün olduğunca otomatize etmeye çalışın. Örneğin, [Docker Compose](https://docs.docker.com/compose/), hem canlı hem de geliştirme ortamlarını eksiksiz bir şekilde oluşturmak için kullanılabilir ve [Dockerfile](https://docs.docker.com/articles/dockerfile_best-practices/) dosyaları, yazılımın tüm parçalarını derlemek ve ortamı tüm parçaları ile ayarlamak için gerekli komut listesini içerir. Daha sonra paketlerin ulaşılamaz hale gelmesi durumunda, yükleyicilerin arşivlenmiş kopyalarını kullanmayı düşünün. Asgari önlem, paketlerin SHA-1 sağlama toplamlarını tutmak ve paketler yüklendiğinde sağlama toplamının eşleştiğinden emin olmaktır.
 
-Consider storing any relevant parts of the development environment and its dependencies in some persistent storage. If the environment can be built using Docker, one possible way to do this is to use [docker export](http://docs.docker.com/reference/commandline/cli/#export).
+Geliştirme ortamının ilgili tüm parçalarını ve bağımlılıklarını kalıcı olarak saklamayı düşünün. Eğer ortamlarınızı Docker ile inşaa edebiliyorsanız, bunu gerçekleştirmek için [docker export](http://docs.docker.com/reference/commandline/cli/#export) kullanabilirsiniz.
 
 # Data persistence
 
