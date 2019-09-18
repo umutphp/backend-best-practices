@@ -32,7 +32,7 @@ Arka uçta örnek yöntemler
   - [Kullanıcı Şifreleri Depolanması](#kullan%C4%B1c%C4%B1-%C5%9Fifreleri-depolanmas%C4%B1)
   - [Denetim Logları](#denetim-loglar%C4%B1)
   - [Şüpheli Eylem Kısıtlama ve/veya engelleme](#%C5%9F%C3%BCpheli-eylem-k%C4%B1s%C4%B1tlama-veveya-engelleme)
-  - [Anonymized Data](#anonymized-data)
+  - [Anonim Veriler](#anonim-veriler)
   - [Temporary file storage](#temporary-file-storage)
   - [Dedicated vs Shared server environment](#dedicated-vs-shared-server-environment)
 - [Application monitoring](#application-monitoring)
