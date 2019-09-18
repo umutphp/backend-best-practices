@@ -85,17 +85,17 @@ Kullandığınız veri deplolama çözümünden bağımsız olarak aklınızda t
 * Veri yapısı değişiklikleri için bir planınız olsun
 * Kalıcı veri çözümünüzü sürekli izleyebildiğiniz çalışan bir gözleme yapınız olsun
 
-## SaaS, bulut ya da kendi sunucunuz?
+## SaaS, bulutta sunucu ya da kendi sunucunuz?
 
-An important choice regarding any solution is where to run it.
+Yaptığımız çözümler için bir önemli seçim de çözümün nerde çalışacağıdır.
 
-* SaaS -- fast to get started, easy to scale up, some infrastructure work required to allow access from everywhere etc.
-* Self-hosted in the cloud -- allows tuning database more than SaaS and probably cheaper at scale in terms of hosting, but more labor-intensive
-* Self-hosted on own hardware -- able to tweak everything and manage physical security, but most expensive and labor intensive
+* SaaS -- ilk kurulum hızlıca yapılabilir, kolayca dikey olarak ölçeklenebilir, her yerden erişim gibi istekler için az da olsa sistem işlemleri gerekebilir.
+* Bulutta sunucu -- veritabanını SaaS'tan daha fazla ayarlamaya izin verir ve kendi sunucunuza sahip olma ile karşılaştırınca büyük olasılıkla daha ucuzdur, ama SaaS'a göre daha emek yoğun bir çözümdür.
+* Self-hosted on own hardware -- her şeye ince çekilebilir ve fiziksel güvenliği yönetebilir, ama diğer iki çözüme göre daha pahalıdır ve daha çok emek gerektirir.
 
-## Persistence solutions
+## Kalıcı deplolama çözümleri
 
-This section aims to provide some guidance for selecting the type of persistence solution. The choice always needs to be tailored to the problem and none of these is a silver bullet, however.
+Bu bölüm, kalıcı depolama çözümünün türünü seçmek için bazı kılavuzlar sağlamayı amaçlamaktadır. Seçim her zaman soruna göre uyarlanmalı ve bunların hiçbiri sihirli değnek değildir.
 
 ### RDBMS
 
