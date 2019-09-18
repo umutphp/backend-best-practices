@@ -155,38 +155,38 @@ Canlı öncesi (prova, staging) tam olarak canlı gibi yapılandırılmalıdır.
 
 İşlemmiş büyük demir parçası. Uygun seviyede log yapılan, devamlı gözlemlenen, periyodik olarak temizlenen, her türlü sorundan uzaklaştırılmaya çalışılmış ve emniyete alınmaya çalışılmış bir ortam.
 
-# Bill of Materials
+# Malzeme Listesi
 
-This document must be included in every build artifact and shall contain the following:
+Bu liste her derleme/build sonrası oluşan artifact içine dahil edilmeli ve aşağıdakileri içermeli:
 
-1. What version(s) of an SDK and critical tools were used to produce it
-1. Which dependencies have been included
-1. A globally unique revision number of the build (i.e. a git SHA-1 hash)
-1. The environment and variables used when building the package
-1. A list of failed tests or checks
+1. Kritik araçların ya da SDK'nın hangi versiyonları  kullanıldı
+1. Hangi bağımlılıklar dahil edilmiştir
+1. Sonucun global olarak benzersiz bir sürüm numarası (örneğin git SHA-1)
+1. Paketi oluştururken kullanılan ortam ve değişkenler
+1. Fail eden test ve kontrollerin listesi
 
 
-# Security
+# Güvenlik
 
-Be aware of possible security threats and problems. You should at least be familiar with the [OWASP Top 10 vulnerabilities](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project), and you should of monitor vulnerabilities in any third party software you use.
+Olası güvenlik tehditleri ve sorunlarının farkında olun. En azından OWASP Top 10 güvenlik açıklarına aşina olmanız ve kullandığınız üçüncü taraf yazılımlardaki güvenlik açıklarını takip etmeniz gerekir.
 
-Good generic security guidelines would be:
+Kabul edilebilir genel güvenlik kuralları şöyle olabilir:
 
 ## Docker
 
-**Using Docker will not make your service more secure.** Generally, you should consider at least following things if using Docker:
+**Docker kullanmak uygulamanızı daha güvenli yapmayacaktır.** Docker kullanıyorsanız en azından aşağıdakileri yapmayı düşünmelisiniz:
 
-- Don't run any untrusted binaries inside Docker containers
-- Create unprivileged users inside Docker containers and run binaries using unprivileged user instead of root whenever possible
-- Periodically rebuild and redeploy your containers with updated libraries and dependencies
-- Periodically update (or rebuild) your Docker hosts with latest security updates
-- Multiple containers running on same host will by default have some level of access to other containers and the host itself. Properly secure all hosts, and run containers with a minimum set of capabilities, for example preventing network access if they don't need it.
+- Güvenli kabul edilmeyen hiç birşey paketi Docker konteynırınızda çalıştırmayın
+- Mümkün olduğunda konteynır içinde "root" dışında normal kullanıcılar yaratın ve onlar ile çalışın
+- Düzenli aralıklarla konteynırlarınızı güncel kütüphane ve bağımlıklıkları kullanarak yeninden derleyin
+- Düzenli aralıklarla Docker sunucunuzu gerekli güvenlik yamalarını yaparak güncelleyin
+- Aynı ana bilgisayarda çalışan birden fazla konteynır, varsayılan olarak diğer konteynırlara ve ana bilgisayarın kendisine belli bir erişim düzeyine sahip olacaktır. Tüm ana bilgisayarları doğru şekilde emniyete alın ve minimum erişim grubuna sahip konteynırlar çalıştırın; örneğin, ihtiyaç duymadıklarında ağ erişimini engelleyin.
 
-## Credentials
+## Kimlik bilgileri
 
-Never send credentials unencrypted over public network. Always use encryption (such as HTTPS, SSL, etc.).
+Asla kimlik bilgilerini hiçbir zaman genel ağ üzerinden şifrelenmemiş şekilde göndermeyin. Her zaman şifreleme kullanın (örneğin HTTPS, SSL vb.).
 
-## Secrets
+## Gizli bilgiler
 
 Never store secrets (passwords, keys, etc.) in the sources in version control! It is very easy to forget they are there and the project source tends to end up in many places (developer machines, development test servers, etc) which unnecessarily increases the risk of an important secret being compromised. Also, version control has the nasty feature of overwriting file permissions, so even if you secure your config file permissions, the next time you check out the source, the permissions would be overwritten to the default public-readable.
 
