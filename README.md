@@ -7,27 +7,27 @@ Arka uçta örnek yöntemler
 
 - [N Emir](#n-emir)
 - [Buradaki yönergeler için genel noktalar](#buradaki-y%C3%B6nergeler-i%C3%A7in-genel-noktalar)
-- [Development environment setup in README.md](#development-environment-setup-in-readmemd)
-- [Data persistence](#data-persistence)
-  - [General considerations](#general-considerations)
-  - [SaaS, cloud-hosted or self-hosted?](#saas-cloud-hosted-or-self-hosted)
-  - [Persistence solutions](#persistence-solutions)
+- [Geliştirme ortamını README.md dosyasında belgeleyin](#geli%C5%9Ftirme-ortam%C4%B1n%C4%B1-readmemd-dosyas%C4%B1nda-belgeleyin)
+- [Veriyi kalıcı olarak depolama](#veriyi-kal%C4%B1c%C4%B1-olarak-depolama)
+  - [Genel değerlendirmeler](#genel-de%C4%9Ferlendirmeler)
+  - [SaaS, bulutta sunucu ya da kendi sunucunuz?](#saas-bulutta-sunucu-ya-da-kendi-sunucunuz)
+  - [Kalıcı deplolama çözümleri](#kal%C4%B1c%C4%B1-deplolama-%C3%A7%C3%B6z%C3%BCmleri)
     - [RDBMS](#rdbms)
     - [NoSQL](#nosql)
-      - [Document storage](#document-storage)
-      - [Key-value store](#key-value-store)
-      - [Graph database](#graph-database)
+      - [Belge tabanlı depolama çözümleri](#belge-tabanl%C4%B1-depolama-%C3%A7%C3%B6z%C3%BCmleri)
+      - [Anahtar-değer depolama çözümleri](#anahtar-de%C4%9Fer-depolama-%C3%A7%C3%B6z%C3%BCmleri)
+      - [Grafik veritabanları](#grafik-veritabanlar%C4%B1)
 - [Environments](#environments)
-  - [Local development environment](#local-development-environment)
-  - [Continuous integration environment](#continuous-integration-environment)
-  - [Testing environment](#testing-environment)
-  - [Staging environment](#staging-environment)
-  - [Production environment](#production-environment)
-- [Bill of Materials](#bill-of-materials)
-- [Security](#security)
+  - [Lokal geliştirme ortamı](#lokal-geli%C5%9Ftirme-ortam%C4%B1)
+  - [CI ortamı](#ci-ortam%C4%B1)
+  - [Test ortamı](#test-ortam%C4%B1)
+  - [Canlı öncesi (Staging) ortamı](#canl%C4%B1-%C3%B6ncesi-staging-ortam%C4%B1)
+  - [Canlı](#canl%C4%B1)
+- [Malzeme Listesi](#malzeme-listesi)
+- [Güvenlik](#g%C3%BCvenlik)
   - [Docker](#docker)
-  - [Credentials](#credentials)
-  - [Secrets](#secrets)
+  - [Kimlik bilgileri](#kimlik-bilgileri)
+  - [Gizli bilgiler](#gizli-bilgiler)
   - [Login Throttling](#login-throttling)
   - [User Password Storage](#user-password-storage)
   - [Audit Log](#audit-log)
@@ -188,9 +188,9 @@ Asla kimlik bilgilerini hiçbir zaman genel ağ üzerinden şifrelenmemiş şeki
 
 ## Gizli bilgiler
 
-Never store secrets (passwords, keys, etc.) in the sources in version control! It is very easy to forget they are there and the project source tends to end up in many places (developer machines, development test servers, etc) which unnecessarily increases the risk of an important secret being compromised. Also, version control has the nasty feature of overwriting file permissions, so even if you secure your config file permissions, the next time you check out the source, the permissions would be overwritten to the default public-readable.
+Sürüm kontrol sistemlerinde gizli olması gereken bilgileri (şifreler, SSH anahtarları vb.) asla saklamayın! Orada olduklarını unutmak çok kolaydır ve proje kaynağı birçok yere (geliştirici makineler, geliştirme test sunucuları vb.) yüklenebilir; bu da tehlikeye atılma riskini gereksiz yere artırır. Ayrıca, sürüm kontrol sistemleri, dosya izinlerinin üzerine yazma konusunda çok kötü bir özelliğe sahiptir, bu nedenle, yapılandırma dosyası izinlerinizi güvence altına alsanız bile, bir sonraki kaynağı kontrol ettiğinizde izinler varsayılan olarak okunabilir ya da varsayılanın üzerine yazılabilir.
 
-Probably the easiest way to handle secrets is to put them in a separate file on the servers that need them, and to be ignored by version control. You can keep e.g. a `.sample` file in the version control, with fake values to illustrate what should go there in the real file. In some cases, it is not easy to include a separate configuration file from the main configuration. If this happens, consider using environment variables, or writing the config file from a version-controlled template on deployment.
+Muhtemelen gizli verileri yönetmenin en kolay yolu, onları ihtiyaç duyan sunuculardaki ayrı bir dosyaya koymak ve sürüm kontrolü tarafından yoksaymaktır. Örneğin sürüm kontrolünde bir “.sample” dosyası tutulabilir, o dosyaya gerçekte neyin olması gerektiğini göstermek için sahte değerler koyulabilir. Bazı durumlarda, ana konfigürasyondan ayrı bir konfigürasyon dosyası eklemek kolay değildir. Bu durumda, ortam değişkenlerini kullanmayı veya yapılandırma dosyasını sürüm kontrolündeki bir şablondan  oluşturmayı düşünün.
 
 ## Login Throttling
 
