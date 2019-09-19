@@ -428,13 +428,13 @@ Sorunlu bir kontrol var:
 
 Eğer uygulama sağlıklı ve ayakta ise, durum sayfasının cevabının HTTP kodu 200 (OK) OLMALIDIR. Bunun dışındaki durumlarda 5XX HTTP kodları DÖNÜLMELİDİR. Örneğin, 500 (Internal Server Error - Sunucu hatası) kodu kullanılabilir. İsteğe bağlı olarak, kritik olmayan WARN durumlarında HTTP 200 kodu kullanılabilir.
 
-## Load balancer health checks
+## Yük dengeleyici kontrolleri
 
-Often the application is running behind a load balaner. Load balancers typically can monitor application servers by polling a given URL. The health check is used so that the load balancer can stop routing traffic to the failing application servers.
+Bzen uygulamalar yük dengeleyicelerin arkasında çalışır. Yük dengeleyiciler arkalarındaki uygulamaları basitce bir URL çağırarak kontrol ederler. Bu kotroller dengeleyicilerin bir uygulama sunucusunda sorun olması durumunda o sunucuya trafik göndermemelerini sağlar.
 
-The overall `/status` page is a good candidate for the load balancer health check URL. However, a separate dedicated status page for a load balancer health check provides an important benefit. Such a page can be fine-tuned for when the application is considered to be healthy from the load balancer's perspective. For example, an error in a subsystem may still be considered a critical error for the overall application status, but does not necessarily need to cause the application server to be removed from the load balancer pool. A good example is a 3rd party integration status check. The load balancer health check page should only return non-200 status code when the application instance must be considered non-operational.
+Uygulamamızın genel `/status` sayfası dengeleyicilerin kontrol URL'si olarak kullanması için oldukça uygundur. Bunun yanında sadece dengeleyicilere özel bir durum sayfası yapmak da fayda sağlayabilir. Bu sayfa denegeleyicinin bakışına göre durumu ifadelendirerek şekillendirilebilir. Örneğin, genel durum için oldukça kötü olarak değerlendirilen bir hata, denegeleyici için aynı mantıkla değerlendirilemeyebilir ve sunucunun dengeleyici havuzundan çıkmaması sağlanabilir bu sayede. Buna güzel bir örnek de harici servislerin hata vermesi durumudur ve bu durumda sunucu kötü durumda olarak değerlendirilip havuzdan çıkarılamaz.
 
-The load balancer health check page should be placed at a `/status/health` URL. Depending on your load balancer, the format of that page may deviate from the overall status format described here. Some load balancers may even observe only the returned HTTP status code.
+Denegeleyici için hazırladığınız sayfanın URL'si `/status/health` olabilir. Kullandığınız dengeleyici çözümüne göre sayfanın formatı burada bahsettiğimiz formatlardan farklı olabilir. Örneğin bazı yük dengeleyiciler sadece HTTP kodlarına bakarlar.
 
 ## Access control
 
