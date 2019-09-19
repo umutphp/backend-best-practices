@@ -266,27 +266,27 @@ Başlangıçta paylaşımsız bir sunucuda çalışmaya başlasanız bile uygula
 
 Bazen bazı dosyalar başka sistem kullanıcıları tarafından da okunması gerekir (örneğin, apache tarafından yayınlanan dosyalar). Bu durumda, sadece gerekli olan kullanıcıların erişmesine izin verin.
 
-UNiz/Liux dosya sistemlerinde yazma izninin çok güçlü bir izin olduğunu unutmayın, çünkü bu izin silme yetkisini de kapsıyor ve bir dosyanın silinip yeniden oluşturularak tamamen değiştirilmesine sebep olabilir. /tmp ve /var/tmp dizinleri üzerinde ayarlanması gereken yapışkan bit (sticky bit) nedeniyle bu etkiden ön tanımlı olarak güvenlidir.
+UNIX/Linux dosya sistemlerinde yazma izninin çok güçlü bir izin olduğunu unutmayın, çünkü bu izin silme yetkisini de kapsıyor ve bir dosyanın silinip yeniden oluşturularak tamamen değiştirilmesine sebep olabilir. /tmp ve /var/tmp dizinleri üzerinde ayarlanması gereken yapışkan bit (sticky bit) nedeniyle bu etkiden ön tanımlı olarak güvenlidir.
 
-Bunlara ek olarak, gizli veriler bölümünde anlatıldığı gibi dosya izinleri sürüm kontrol sistemlerinde korunmayabilir. Başlangıçta siz düzgün bir şekilde ayarlamış olsanız bile checkout/update gibi komutlar dosya izinlerini değiştirebilirler. Bunun için en güzel çözümlerden biri de bir Makefile, bir betik , bir sürüm kontrol sistemi kanca işlevi ya da bunlara benzer bir yapı ile her zamanda dosya izinlerini güncellemektir.
+Bunlara ek olarak, gizli veriler bölümünde anlatıldığı gibi dosya izinleri sürüm kontrol sistemlerinde korunmayabilir. Başlangıçta siz düzgün bir şekilde ayarlamış olsanız bile checkout/update gibi komutlar dosya izinlerini değiştirebilirler. Bunun için en güzel çözümlerden biri de bir Makefile, bir betik, sürüm kontrol sisteminde bir kanca işlevi ya da bunlara benzer bir yapı ile her zaman dosya izinlerini güncellemektir.
 
-# Application monitoring
+# Uygulama takibi
 
-Monitoring the full status of a service requires that both OS-level and application-specific monitoring checks are performed. OS-level checks include, for example, CPU, disk or memory usage, running processes, open ports, etc. Application specific checks are, however, the most important from the point of view of the running service. These can be anything from "does this URL respond and return the HTTP status 200", to checking database connectivity, data consistency, and so on.
+Uygulamanızın tam anlamıyla durumunu takip edebilmek için hem işletim sistemi seviyesinde hem de uygulamanıza özel kontroller yapmalısınız. İşletim sistemi seviyesinde yapılacak kontroller CPU, depolama, hafıza kullanımı, çalışan uygulamalar, açık portlar vs gibi kontrolleri içerir. Ancak, uygulamaya özel kontroller hizmet çalışması açısından daha önemlidir. Bu kontroller "bu URL cevap veriyor mu ve HTTP 200 dönüyor mu" gibi kontrollerden başlayıp veritabanı bağlantısından veri tutarlılığına kadar genişleyebilir.
 
-This section describes a way to implement the application-specific checks, which would make it easier to monitor the overall application health and give full control to the application developers to determine what checks are meaningful in the context of the concrete application.
+Bu bölüm, uygulamaya özel kontrollerin uygulanmasının, genel uygulama sağlığının izlenmesini kolaylaştıracak ve somut uygulama bağlamında hangi kontrollerin anlamlı olduğunu belirlemek için uygulama geliştiricilerine tam kontrol sağlayan yöntemleri açıklamaktadır.
 
-In essence, the idea is to have a single endpoint (an application URL) that can give a good status overview of the entire application. This is implemented inside the application and requires work from the project team, but on the other hand, the project team is the one who can really define what is an OK state of the application and what is considered an ERROR state.
+İşin özünde, en güzel yol uygulamanın durumu hakkında toplu bir bilgi veren tek bir erişim noktası (uyuglamada çalışan bir URL) olmasıdır.  Bunun uygulama içinde yapılması gerekir ve proje ekibinin dahil olması gereklidir, çünkü proje ekibi uygulamanın OK durumunun ne olduğunu ve ERROR durumunun ne olduğunu gerçekten tanımlayabilen ekiptir.
 
-The application could implement any number of "subsystem" checks. For example,
+Uygulama, herhangi bir sayıda "alt sistem" kontrolü de uygulayabilir. Örneğin,
 
-* connection to the database is up
-* data is in an consistent state (e.g. a list of items in a certain database table is meaningful)
-* 3rd party services that the application integrates to are reachable
-* ElasticSearch indexes are in a consistent state
-* anything else that makes sense for the application
+* veritabanı bağlantısı sağlıklı mı
+* veri bütünlüğü korunuyor mı (Örneğin, bir tablodaki kayıtlar doğru mu)
+* uygulamanın iletişimde olduğu harici servisler erişilebilir mi
+* ElasticSearch indeksleri tutarlı mı
+* uygulama için anlamlı olan herşey
 
-A combined overview status should be provided by the application, aggregating the information from the various subsystem checks. The idea is that an external monitoring system can track only this combined overview, so that the external monitoring does not need to be reconfigured when a new application check is added or modified. Moreover, the developers are the ones that can decide about what the overall status is based on regarding subsystem checks (i.e. which ones are critical, while ones are not, etc).
+Alt sistem kontrollerinden gelen bilgilerle birleştirilerek, uygulama tarafından toplu bir genel durum gösterimi sağlanmalıdır. Buradaki fikir, bir harici izleme sisteminin yalnızca bu birleştirilmiş genel bakışı izlemesidir, böylece yeni bir uygulama kontrolü eklendiğinde veya değiştirildiğinde, harici izlemenin yeniden yapılandırılması gerekmez. Dahası, geliştiriciler genel durumun alt sistem kontrollerine neyin dayandığına karar verebilecek olan kişilerdir. (örneğin, hangisi önemli hangisi değil vs).
 
 ## Status page
 
