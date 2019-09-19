@@ -436,19 +436,19 @@ Uygulamamızın genel `/status` sayfası dengeleyicilerin kontrol URL'si olarak 
 
 Denegeleyici için hazırladığınız sayfanın URL'si `/status/health` olabilir. Kullandığınız dengeleyici çözümüne göre sayfanın formatı burada bahsettiğimiz formatlardan farklı olabilir. Örneğin bazı yük dengeleyiciler sadece HTTP kodlarına bakarlar.
 
-## Access control
+## Erişim kısıtlaması
 
-The status pages may need proper authorization in place, especially in case they expose debugging information in status messages or application metrics. HTTP basic authentication or IP-based restrictions are usually good enough candidates to consider.
+Durum sayfaları eğer hassas hata ayıklama ya da uygulama bilgileri veriyorlarsa uygun seviyede erişim yetkilendirilmesi ile korunmalıdırlar. "HTTP basic authentication" ya da IP tabanlı kısıtlama bunun için uygundur.
 
-# Checklists
+# Kontrol listesi
 
-To avoid forgetting the most important things, here are some handy checklists for your current or upcoming projects.
+Önemli işleri unutmamak için kullanabileceğiniz bazı kontrol listelerini sizin için derledik.
 
-## Responsibility checklist
+## Sorumluluk kontrol listesi
 
-In bigger projects, especially when multiple parties are involved, it is crucial to keep track of all different aspects and its responsibilities. The following table illustrates how a go-live checklist for releasing a website could look like:
+Özellikle birden fazla ekibin yer aldığı büyük projelerde her grubun ve sorumluğun takibini yapmak önemlidir. Aşağıdaki tablo bir web sayfasının canlıya çıkarılması sırasında kullanıbilecek bir kontrol listesini gösteriyor:
 
-| Aspect    | Task                              | Responsible person / party | Deadline     | Status            |
+| Grup      | Görev                             | Sorumlu kişi / takım       | Bitiş tarihi | Durum             |
 |---        |---                                |---                         |---           |---                |
 | Frontend  | Website wireframes                | e.g. Company B / Person X  | e.g. 17.6.   |  e.g. in progress |
 | Frontend  | Website design                    | e.g. Company A / Person Z  | e.g. 23.7.   |  e.g. waiting     |
@@ -465,16 +465,16 @@ In bigger projects, especially when multiple parties are involved, it is crucial
 | Dates     | Website/Product go-live time      |   |   |   |
 | Dates     | Publish the website               |   |   |   |
 
-## Release checklist
+## Yayın kontrol listesi
 
-When you are ready to release, remember to check off everything on your release checklist! The resulting peace of mind, repeatability and dependability is a great boon.
+Eğer kodunuzun yeni bir sürümünü yayınlamaya hazırsanız, yayın kontrol listenizdeki herşeyi tamamlamayı unutmayın! Ortaya çıkan huzur, tekrarlanabilirlik ve güvenilirlik büyük bir nimettir.
 
-You *do* have one, right? If you don't, here is a good generic starting point for you:
+Sizin *zaten* bir listeniz vardır, değil mi? Eğer yoksa, aşağıdaki sizin için güzel bir başlangıç olabilir:
 
-* [ ] Deploying works the same no matter which environment you are deploying to
-* [ ] All environments have well defined names, and they are referred to using those names
-* [ ] All environments have the same underlying software stack
-* [ ] All environment configuration is version controlled (web server config, CI build scripts etc.)
+* [ ] Sürüm yükleme işlemi ortam ne olursa olsun çalışıyor
+* [ ] Bütün ortamların iyi tanımlanmış isimleri var ve yaptıkları işlerle alakalı
+* [ ] Bütün ortamlar aynı teknoloji yığınına sahip
+* [ ] Bütün ortam ayarları sürüm kontrol sistemlerinde olmalı (web sunucu ayarları, CI betikleri vs.)
 * [ ] The product has been tested from the networks from where it will be used (e.g. public Internet, customer LAN)
 * [ ] The product has been tested with all of the targeted devices
 * [ ] There is a simple way to find out what code is running in any given environment
