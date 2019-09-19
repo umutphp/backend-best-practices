@@ -475,39 +475,39 @@ Sizin *zaten* bir listeniz vardır, değil mi? Eğer yoksa, aşağıdaki sizin i
 * [ ] Bütün ortamların iyi tanımlanmış isimleri var ve yaptıkları işlerle alakalı
 * [ ] Bütün ortamlar aynı teknoloji yığınına sahip
 * [ ] Bütün ortam ayarları sürüm kontrol sistemlerinde olmalı (web sunucu ayarları, CI betikleri vs.)
-* [ ] The product has been tested from the networks from where it will be used (e.g. public Internet, customer LAN)
-* [ ] The product has been tested with all of the targeted devices
-* [ ] There is a simple way to find out what code is running in any given environment
-* [ ] A versioning scheme has been defined
-* [ ] Any version of the product should be easily mappable to a state of the code base
-* [ ] Rolling back a deployment is possible
-* [ ] Backups are running
-* [ ] Restoring from a backup has been tested
-* [ ] No secrets are stored in version control
-* [ ] Logging is turned on
-* [ ] There is a well defined process for accessing and searching through logs
-* [ ] Logging includes exceptions and stack traces where appropriate
-* [ ] Errors can be mapped to stack traces
-* [ ] Release notes have been written
-* [ ] Server environments are up-to-date
-* [ ] A plan for updating the server environments exists
-* [ ] The product has been load tested
-* [ ] A method exists for replicating the state of one environment in another (e.g. copy prod to QA to reproduce an error)
-* [ ] All repeating release processes have been automated
+* [ ] Ürün, kullanılacağı yerdeki ağlardan test edilmiştir (örneğin genel İnternet, müşteri LAN).
+* [ ] Ürün, hedeflenen tüm cihazlarla test edildi
+* [ ] Hangi ortamda hangi sürüm olduğunu anlamanın kolay bir yolu olmalı
+* [ ] Bir sürüm şeması tanımlandı
+* [ ] Ürünün herhangi bir sürümü, kod tabanının sabit bir durumuna göre kolayca eşleştirilebilir
+* [ ] Herhangi bir önceki sürüme dönüş kolaydır
+* [ ] Yedekleme sistemleri çalışıyor
+* [ ] Herhangi bir yedekten ayağı kaldırma işlemi test edildi
+* [ ] Hiçbir gizli bilgi sürüm kontrol sisteminde saklanmıyor
+* [ ] Loglama aktif
+* [ ] Loglara erişim ve araştırma yapmak için tanımlanmış bir süreç olmalı
+* [ ] Loglar uygun olduğunda "exception" ve hata izlerini içermeli
+* [ ] Hatalar logdaki hata izlerine eşlenebilir
+* [ ] Sürüm notları (Release Note) yazıldı
+* [ ] Sunucu ortamları güncel
+* [ ] Sunucu ortamları güncelleme planı var
+* [ ] Ürüne yük testi uygulandı
+* [ ] Herhangi bir ortamı diğer bir ortama kopyalama işlemi var (Örneğin, canlı ortamı QA ortamına kopyalayıp canlıda olan hatayı oluşturma)
+* [ ] Tekrar eden bütün sürüm işlemleri otomatize edilmiş
 
 # Dikkat edilmesi gereken sorular
 
-* What is the expected/required life-span of the project?
-* Is the project one-off, or will there be continuous development?
-* What is the release cycle for a version of the service?
-* What environments (dev, test, staging, prod, ...) are going to be set up?
-* How will downtime of the production service impact the value of the service?
-* How mature is the technology? Is major changes that break backward compatibility to be expected?
+* Projenin beklenen/gerekli ömrü nedir?
+* Proje tek seferlik mi yoksa sürekli gelişme olacak mı?
+* Hizmetin bir sürümü için sürüm döngüsü nedir?
+* Hangi ortamlar (dev, test, staging, prod, ...) kurulacak?
+* Canlı ortamın aksama süresi servisin değerini nasıl etkileyecek?
+* Kullandığımız teknolojiler ne kadar olgun? Geriye dönük uyumlulukları bozan önemli değişiklikler beklenebilir mi?
 
 # Faydalı olduğu kabul edilebilir araçlar
 
-* [HTTPie](https://github.com/jakubroztocil/httpie) is a great tool for testing APIs on the command line. It's simple to pass in custom headers and cookies, and it even has session support.
-* [jq](http://stedolan.github.io/jq/) is a CLI JSON processor. Massage JSON data coming in from cURL (or of course HTTPie!) at will. Another great tool for API testing or exploration.
+* [HTTPie](https://github.com/jakubroztocil/httpie) API'leri komut satırında test etmek için harika bir araçtır. Özel başlıklara ve çerezlere geçiş yapmak kolaydır ve hatta oturum desteğine sahiptir.
+* [jq](http://stedolan.github.io/jq/) bir CLI JSON işlemcisidir. İsteğe bağlı olarak cURL'den (veya elbette HTTPie!) gelen JSON verilerine işlem yapın. API testi veya araştırması için bir başka harika araç.
 
 # Lisans
 
