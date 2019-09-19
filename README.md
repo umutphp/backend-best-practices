@@ -247,28 +247,28 @@ Hassas bilgileri günlüğe kaydetmeniz gerekiyorsa, günlüğe kaydetmeden önc
 
 Uygulamanızın geçici dosyaları nerede sakladığını bildiğinizden emin olun. Genel olarak erişilebilen dizinleri (muhtemelen varsayılanıdır) `/tmp` ve` /var/tmp` gibi kullanıyorsanız, dosyalarınızı mod 600 ile oluşturduğunuzdan emin olun, böylece sadece uygulamanızın çalıştığı sistem kullanıcısı tarafından okunabilir. Alternatif olarak, geçici dosyaları saklamak için korumalı bir dizine (sadece uygulama kullanıcısı tarafından erişilebilir dizin) sahip olabilirsiniz.
 
-## Dedicated vs Shared server environment
+## Paylaşımsız vs Paylaşımlı sunucu ortamı
 
-The security threats can be quite different depending on whether the application is going to run in a shared or a dedicated environment. Shared here means that there are other (not necessarily 3rd party) applications running on the same server. In that case, having appropriate file permissions becomes critical, otherwise application source code, data files, temporary files, logs, etc might end up accessible by unintended users. Then a security breach in a 3rd party application might result in your application being compromised.
+Güvenlik tehditleri uygulamanın paylaşımlı ya da paylaşımsız sunucular üzerinde çalışmasına bağlı olarak farklılıklar gösterir. Paylaşımlı demek sunucu üzerinde başka uygulamalar da (üçüncü şahıslara ait olmasına gerek yok) çalışıyor demektir. Paylaşımlı sunucularda doğru dosya izinlerinin olması kritiktir, çünkü bir hata olması durumunda uygulama kaynak kodları, veri dosyaları, geçici dosyalar, loglar gibi bilgiler görmemesi gereken kişilere görünür olabilir. Ayrıca diğer uygulamalardaki bir güvenlik açığı sizin uygulamanızızn açığa çıkmasına da sebebp olabilir.
 
-You can never be sure what kind of an environment your application will run for its entire life time—it may start on a dedicated server, but as time goes, 3rd party applications might be added to the same system. That is why it is best to plan from the very first moment that your application runs in a shared environment, and take all precautions. Here's a non-exhaustive list of the files/directories you need to think about:
+Başlangıçta paylaşımsız bir sunucuda çalışmaya başlasanız bile uygulamanızın ileride nasıl bir ortamda ya da sunucuda çalışacağına hiçbir zaman emin olamazsınız. Örneğin, sunucuya ileride başka uygulamalar da yüklenebilir. Bunun içindir ki, en iyi plan uygulamanızın her zaman paylaşımlı bir sunucuda çalışacağını düşünmek ve önlemleri ona göre almaktır. İşte düşünmeniz gereken dosyaların/dizinlerin ayrıntılı bir listesi:
 
-* application source code
-* data directories
-* temporary storage directories (often by default the system wide /tmp might be used - see above)
-* configuration files
-* version control directories - .git, .hg, .svn, etc.
-* startup scripts (may contain initialization variables, secrets, etc)
-* log files
-* crash dumps
-* private keys (SSL, SSH, etc)
-* etc.
+* uygulamanızın kaynak kodu
+* veri dizinleri
+* geçici dosya depolama dizinleri (genellikle ön tanımlı sistem dizinleri (/tmp vs) kullanılır - bir önceki bölüme bakabilirsiniz)
+* ayar dosyaları
+* sürüm kontrol sistemlerinin ayar dizinleri - .git, .hg, .svn, vs.
+* başlangıç betikleri (başlangıç değişkenleri ve gizli bilgilerini içerebilir vs)
+* log dosyaları
+* çöküş raporları
+* özel anahtar dosyalar (SSL, SSH, vs)
+* vs.
 
-Sometimes, some files need to be accessible by different users (e.g. static content served by apache). In that case, take care to allow only access to what is really needed.
+Bazen bazı dosyalar başka sistem kullanıcıları tarafından da okunması gerekir (örneğin, apache tarafından yayınlanan dosyalar). Bu durumda, sadece gerekli olan kullanıcıların erişmesine izin verin.
 
-Keep in mind that on a UNIX/Linux filesystem, write access to a directory is permission-wise very powerful—it allows you to delete files in that directory and recreate them (which results in a modified file). /tmp and /var/tmp are by default safe from this effect, because of the sticky bit that should be set on those.
+UNiz/Liux dosya sistemlerinde yazma izninin çok güçlü bir izin olduğunu unutmayın, çünkü bu izin silme yetkisini de kapsıyor ve bir dosyanın silinip yeniden oluşturularak tamamen değiştirilmesine sebep olabilir. /tmp ve /var/tmp dizinleri üzerinde ayarlanması gereken yapışkan bit (sticky bit) nedeniyle bu etkiden ön tanımlı olarak güvenlidir.
 
-Additionally, as mentioned in the secrets section, file permissions might not be preserved in version control, so even if you set them once, the next checkout/update/whatever may override them. A good idea is then to have a Makefile, a script, a version control hook or something similar that would set the correct permissions when updating the sources.
+Bunlara ek olarak, gizli veriler bölümünde anlatıldığı gibi dosya izinleri sürüm kontrol sistemlerinde korunmayabilir. Başlangıçta siz düzgün bir şekilde ayarlamış olsanız bile checkout/update gibi komutlar dosya izinlerini değiştirebilirler. Bunun için en güzel çözümlerden biri de bir Makefile, bir betik , bir sürüm kontrol sistemi kanca işlevi ya da bunlara benzer bir yapı ile her zamanda dosya izinlerini güncellemektir.
 
 # Application monitoring
 
