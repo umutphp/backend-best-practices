@@ -424,9 +424,9 @@ Sorunlu bir kontrol var:
 }
 ```
 
-## HTTP status codes
+## HTTP durum kodları
 
-Whenever the overall application status is OK, the HTTP status code in the status page response MUST be set to 200 (OK). Otherwise a 5XX error code SHOULD be set. For example, code 500 (Internal Server Error) could be used. Optionally, non-critical WARN status may still respond with 200.
+Eğer uygulama sağlıklı ve ayakta ise, durum sayfasının cevabının HTTP kodu 200 (OK) OLMALIDIR. Bunun dışındaki durumlarda 5XX HTTP kodları DÖNÜLMELİDİR. Örneğin, 500 (Internal Server Error - Sunucu hatası) kodu kullanılabilir. İsteğe bağlı olarak, kritik olmayan WARN durumlarında HTTP 200 kodu kullanılabilir.
 
 ## Load balancer health checks
 
