@@ -288,15 +288,15 @@ Uygulama, herhangi bir sayıda "alt sistem" kontrolü de uygulayabilir. Örneği
 
 Alt sistem kontrollerinden gelen bilgilerle birleştirilerek, uygulama tarafından toplu bir genel durum gösterimi sağlanmalıdır. Buradaki fikir, bir harici izleme sisteminin yalnızca bu birleştirilmiş genel bakışı izlemesidir, böylece yeni bir uygulama kontrolü eklendiğinde veya değiştirildiğinde, harici izlemenin yeniden yapılandırılması gerekmez. Dahası, geliştiriciler genel durumun alt sistem kontrollerine neyin dayandığına karar verebilecek olan kişilerdir. (örneğin, hangisi önemli hangisi değil vs).
 
-## Status page
+## Durum sayfası
 
-All status checks SHOULD be accessible under `/status` URLs as follows:
+Bütün durum kontrol sonuçları `/status` sayfasında aşağıdakiler gibi erişilebilir olmalı:
 
-* `/status` - the overall status page (mandatory)
-* `/status/subsystem1` - a status check for speciffic subsystem (optional)
+* `/status` - toplam durum sayfası (zorunlu)
+* `/status/subsystem1` - belli bir alt sisteme ait durum sayfası (zorunlu değil)
 * ...
 
-The main `/status` page should at a minimum give an overall status of the system, as described in the next section. This means that the main `/status` page should execute ALL subsystem checks and report the aggregated overall system status. It is up to the developers to decide how the overall system status is determined based on the subsystems. For example an `ERROR` state of some non-critical subsystem may only generate an overall `WARNING` status.
+Ana `/status` sayfası bir sonraki bölümde açıklandığı gibi en azından sistemin genel durumunu vermelidir. This means that the main `/status` page should execute ALL subsystem checks and report the aggregated overall system status. It is up to the developers to decide how the overall system status is determined based on the subsystems. For example an `ERROR` state of some non-critical subsystem may only generate an overall `WARNING` status.
 
 For performance reasons, some subsystem checks may be excluded from this overall `/status` page - for example, when the check causes higher resource usage, takes longer time to complete, etc. Overall, the main status page should be light enough so that it can be polled relatively often (every 1-3 minutes) and not cause too much load on the system. Subsystem checks that are excluded from the overall status check should have their own URLs, as shown above. Naturally, monitoring those would require modifications in the monitoring system configuration. To overcome this, a different approach can be taken: the application could perform the heavy subsystem checks in a background process at a rate that is acceptable and store the status internally. This would allow the main status page to reflect also these heavy checks (e.g. it would retrieve the last performed check status). This approach should be used, unless its implementation is too difficult.
 
