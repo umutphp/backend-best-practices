@@ -300,23 +300,23 @@ Ana `/status` sayfası bir sonraki bölümde açıklandığı gibi en azından s
 
 Performans endişelerinden dolayı, bazı alt sistem kontrolelri genel `/status` sayfasında gözardı edilebilir, örneğin kontrol sırasında sistem kaynakları çok fazla kullanılıyorsa ya da kontrolün yapılması uzun zaman alıyorsa. Bir bütün olarak düşündüğümüzde, ana `/status` sayfası çok hızlı ve sade olmalı ki çok sık çağrılması durumda (1-3 dakikada bir) sistemde her hangi bir yüke sebep olmamalı. Gözardı edilen alt sistem kontrollerinin mutlaka yukarıda bahsedildiği gibi kendine özel sayfaları olmalı. Doğal olarak bu sayfaların takip edilmesi için harici takip sistemleri gerektiği gibi ayarlanmalı. Bu durumu başka bir şekilde çözmek için, şöyle bir yaklaşım ile çözüm uygulanabilir: arkaplanda çalışan bir işlem belli bir aralıkla bu yorucu alt sistem kontrolünü yapar ve sonu kaydeder. Bu ana durum sayfanızda bu tür yüklü kontrollerin sonucunu hızlıca göstermenizi sağlar (örneğin, yapılan son kontrolün sonucunu). Bu yaklaşım eğer uygulanması çok zor değilse mutlaka uygulanmalıdır.
 
-## Status page format
+## Status sayfası formatı
 
-We propose two alternative formats for the status pages - `plain` and `JSON`.
+İki çeşit format öneriyoruz - `düz` and `JSON`.
 
-### Plain format
+### Düz format
 
-The plain format has one status per line in the form `key: value`. The key is a subsystem/check name and the value is the status value. The status value can be one of:
+Düz formatta her satır `anahtar: değer` şeklinde bir durumu  belirtir. Anahtar alt sistem ya da kontrol ismi ve değer de durumu temsil eder. Durum değerleri şunlardan biri olabilir:
 
 * `OK`
-* `WARN Message`
-* `ERROR Message`
+* `WARN Mesaj`
+* `ERROR Mesaj`
 
-where `Message` can be some meaningful text, that can help quickly identify the problem. The message is single line, without specified length restriction, but use common sense - e.g. probably should not be longer than 200 characters.
+Burada ki `Mesaj` metinleri durumun ne olduğunu anlatabilecek anlamlı kısa metinler olmalı. Mesaj metinleri tek satır olmalı, herhangi bir uzunluk kısıtlamasına tabi olmamalı ama mantıklı bir uzunluk olması tercih edilmelidir. Örneğin, 200 karakterden uzun olmamalı denebilir.
 
-The main status page MUST have a key called `status` that shows the overall aggregated application status. The individual subsystem check status lines are optional. Subsystem status keys should have a suffix `_status`. Here are some examples:
+Ana durum sayfası `status` adlı değerinde bütün sistemin durumunu belirten bir anahtar bulundurmalı. Bunun dışında alt sistemler için olan satırlar zorunlu değildir. Eğer kullanılacaksa bu satırların anahtarında `_status` ekleri olmalı:
 
-When everything is ok:
+Herşey düzgün çalışıyorsa:
 
 ```
 status: OK
@@ -324,7 +324,7 @@ database_status: OK
 elastic_search_status: OK
 ```
 
-When some check is failing:
+Sorunlu bir kontrol varsa:
 
 ```
 status: ERROR Database is not accessible
@@ -332,7 +332,7 @@ database_status: ERROR Connection failed
 elastic_search_status: OK
 ```
 
-Multiple failures at the same time:
+Birden fazla sorunlu kontrol varsa:
 
 ```
 status: ERROR failed subsystems: database, elasticsearch. For details see https://myapp.example.com/status
@@ -340,7 +340,7 @@ database_status: ERROR Connection failed
 elastic_search_status: WARN Too few entries in index A.
 ```
 
-In addition to the status lines, a status page can have non-status keys. For example, those can be showing some metrics (that may or may not be monitored). The additional keys must be prefixed with the subsystem name.
+Durum satırlarının yanısıra, durum belirtmeyen satırlar da olabilir. Örneğin bazı ölçümlerin sonuçları olabilir (takip edilsin ya da  edilmesin). Bu ek değerlerin anahları da alt sistemin adını ön ek olarak almalıdır.
 
 ```
 status: OK
@@ -351,7 +351,7 @@ elastic_search_status: OK
 elastic_search_shards: 20
 ```
 
-The overall status may naturally be based on some of the metrics:
+Genel sistem durumu da bazen bu ölçüm değerlerine bağlı olabilir:
 
 ```
 status: WARN Too few items in database
@@ -362,7 +362,7 @@ elastic_search_status: OK
 elastic_search_shards: 20
 ```
 
-Subsystem checks that have their own URL (`/status/subsystemX`) should follow a similar format, having a mandatory key `status` and a number of optional additional keys. Example for e.g. `/status/database`:
+Alt sistem durum sayfaları da kendi adreslerine (`/status/subsystemX`) sahip olmalılar ve aynı formatı uygulamalılar; zorunlu `status` anahtarını bulundurmalılar ve gerekiyorda başka anahları da bulundurabilirler. Örneğin `/status/database`:
 
 ```
 status: OK
