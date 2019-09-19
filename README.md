@@ -372,13 +372,13 @@ latency: 2
 
 ### JSON format
 
-The JSON format of the status pages can be often preferable, for example when the tooling or integration to other systems is easier to achieve via a common data format.
+Durum sayfalarında bazen JSON formatı da tercih edilebilir, örneğin kullanılan harici sistemlerin bu format üzerinde çalışması daha kolay ise.
 
-The status values follow the same format as described above - `OK`, `WARN Message` and `ERROR Message`.
+Durum değerleri aynı yukarıdaki gibi olmalıdır - `OK`, `WARN Mesaj` ve `ERROR Mesaj`.
 
-The equivalent to the status key form the plain format is a `status` key in the root JSON object. Subsystems should use nested objects also having a mandatory `status` key. Here are some examples:
+Düz formatta olduğu gibi `status` anahtarı JSON nesnesinin ana elemanının hemen altında olmalı. Alt sistemler ise zorunlu `status` anahtarına sahip iç nesleler olarak ana nesnenin içine gömülmelidir. Aşağıdaki örnekleri inceleyebilirsiniz:
 
-All is fine:
+Herşey sorunsuz ise ise:
 
 ```json
 {
@@ -392,7 +392,7 @@ All is fine:
 }
 ```
 
-Status page with additional metrics:
+Bazı ek ölçülerle:
 
 ```json
 {
@@ -409,7 +409,7 @@ Status page with additional metrics:
 }
 ```
 
-Something failing:
+Sorunlu bir kontrol var:
 
 ```json
 {
