@@ -495,7 +495,7 @@ Sizin *zaten* bir listeniz vardır, değil mi? Eğer yoksa, aşağıdaki sizin i
 * [ ] A method exists for replicating the state of one environment in another (e.g. copy prod to QA to reproduce an error)
 * [ ] All repeating release processes have been automated
 
-# General questions to consider
+# Dikkat edilmesi gereken sorular
 
 * What is the expected/required life-span of the project?
 * Is the project one-off, or will there be continuous development?
@@ -504,12 +504,12 @@ Sizin *zaten* bir listeniz vardır, değil mi? Eğer yoksa, aşağıdaki sizin i
 * How will downtime of the production service impact the value of the service?
 * How mature is the technology? Is major changes that break backward compatibility to be expected?
 
-# Generally proven useful tools
+# Faydalı olduğu kabul edilebilir araçlar
 
 * [HTTPie](https://github.com/jakubroztocil/httpie) is a great tool for testing APIs on the command line. It's simple to pass in custom headers and cookies, and it even has session support.
 * [jq](http://stedolan.github.io/jq/) is a CLI JSON processor. Massage JSON data coming in from cURL (or of course HTTPie!) at will. Another great tool for API testing or exploration.
 
-# License
+# Lisans
 
 [Futurice Oy](http://www.futurice.com)
 Creative Commons Attribution 4.0 International (CC BY 4.0)
