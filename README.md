@@ -98,7 +98,7 @@ Yaptığımız çözümler için bir önemli seçim de çözümün nerde çalı�
 
 * SaaS -- ilk kurulum hızlıca yapılabilir, kolayca dikey olarak ölçeklenebilir, her yerden erişim gibi istekler için az da olsa sistem işlemleri gerekebilir.
 * Bulutta sunucu -- veritabanını SaaS'tan daha fazla ayarlamaya izin verir ve kendi sunucunuza sahip olma ile karşılaştırınca büyük olasılıkla daha ucuzdur, ama SaaS'a göre daha emek yoğun bir çözümdür.
-* Self-hosted on own hardware -- her şeye ince çekilebilir ve fiziksel güvenliği yönetebilir, ama diğer iki çözüme göre daha pahalıdır ve daha çok emek gerektirir.
+* Self-hosted on own hardware -- her şeye ince ayar çekilebilir ve fiziksel güvenliği yönetilebilir, ama diğer iki çözüme göre daha pahalıdır ve daha çok emek gerektirir.
 
 ## Kalıcı deplolama çözümleri
 
