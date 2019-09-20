@@ -506,7 +506,7 @@ Sizin *zaten* bir listeniz vardır, değil mi? Eğer yoksa, aşağıdaki sizin i
 
 * Projenin beklenen/gerekli ömrü nedir?
 * Proje tek seferlik mi yoksa sürekli gelişme olacak mı?
-* Hizmetin bir sürümü için sürüm döngüsü nedir?
+* Hizmet için sürüm döngüsü nedir?
 * Hangi ortamlar (dev, test, staging, prod, ...) kurulacak?
 * Canlı ortamın aksama süresi servisin değerini nasıl etkileyecek?
 * Kullandığımız teknolojiler ne kadar olgun? Geriye dönük uyumlulukları bozan önemli değişiklikler beklenebilir mi?
