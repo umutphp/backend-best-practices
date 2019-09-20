@@ -148,15 +148,15 @@ Bu sizin kendi geliştirme ortamınızdır. Muhtemelen paylaşılan bir dış ge
 
 ## CI ortamı
 
-CI (diğer ortamların dışında), yazılımınızın derlenmiş hallerinin çalıştığını ve otomatik testlerin her değişiklikten sonra başarı ile geçilmesini sağlamak için kurulan ortamdır.
+CI (diğer ortamların dışında), yazılımınızın derlenmiş hallerinin çalıştığı ve otomatik testlerin her değişiklikten sonra başarı ile geçirilmesini sağlamak için kurulan ortamdır.
 
 ## Test ortamı
 
-Bu, kodun olabildiğince sık dağıtıldığı, tercihen her zaman kodun ana geliştirme dalına bağlı olduğu ortak bir ortamdır. Özellikle aktif gelişim aşamasında, zaman zaman bozulabilir. Bu önemli bir (canary environment )kanarya ortamıdır ve canlı ortama mümkün olduğu kadar benzemelidir. Kullanılan bir harici servislerin en az "staging" seviyesinde sürümlerinin kurulu olması gerekir.
+Bu ortam kodun olabildiğince sık dağıtıldığı ve tercihen her zaman kodun ana geliştirme dalına bağlı olduğu ortak bir ortamdır. Özellikle aktif gelişim aşamasında bu ortam zaman zaman bozulabilir. Bu önemli bir (canary environment) kanarya ortamıdır ve canlı ortama mümkün olduğu kadar benzemelidir. Kullanılan harici servislerin en az "staging" seviyesinde sürümlerinin kurulu olması gerekir.
 
 ## Canlı öncesi (Staging) ortamı
 
-Canlı öncesi (prova, staging) tam olarak canlı gibi yapılandırılmalıdır. Hiç bir değişiklik .ilk önce bu ortamda prova edilmeden üretim ortamına gönderilemez. Gizemli (canlı ortamda ortaya çıkan) herhangi bir sorunun burada hata ayıklaması yapılabilir.
+Canlı öncesi (prova da denilebilir) ortam tam olarak canlı gibi yapılandırılmalıdır. Hiç bir değişiklik ilk önce bu ortamda prova edilmeden üretim ortamına gönderilemez. Gizemli (canlı ortamda ortaya çıkan) herhangi bir sorunun burada hata ayıklaması yapılabilir.
 
 ## Canlı
 
