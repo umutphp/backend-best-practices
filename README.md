@@ -63,9 +63,9 @@ Bunlar, bu belgenin gönüllüler tarafından sağlanan çevirileridir. Herhangi
 
 1. Ana dizindeki README.md dosyası bu kütüphanenin ana belgesidir
 2. Tek komutla çalıştır
-3. Tek komutla paketi çıkın
-4. Tekrarlanabilir ve yeniden yaratılabilir yapılar inşa etmek
-5. Paketlerle beraber bir ["Bir Yığın Malzemeden"](#malzeme-listesi) oluşturun
+3. Tek komutla paketi çık
+4. Tekrarlanabilir ve yeniden yaratılabilir yapılar inşa et
+5. Paketlerle beraber bir ["Bir Yığın Malzemeden"](#malzeme-listesi) oluştur
 6. Her zaman [UTC saat dilimi](http://yellerapp.com/posts/2015-01-12-the-worst-server-setup-you-can-make.html) kullan
 
 # Buradaki yönergeler için genel noktalar
