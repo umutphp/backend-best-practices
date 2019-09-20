@@ -70,7 +70,7 @@ Bunlar, bu belgenin gönüllüler tarafından sağlanan çevirileridir. Herhangi
 
 # Buradaki yönergeler için genel noktalar
 
-Kendimizi belirli teknoloji yığınları veya çerçevelerle sınırlamak istemiyoruz. Farklı problemler farklı çözümler gerektirir ve bu nedenle bu yönergeler her çeşit arka uç mimarisi için geçerlidir.
+Bu belgede kendimizi belirli teknoloji yığınları veya çerçevelerle sınırlamak istemiyoruz. Farklı problemler farklı çözümler gerektirir ve bu nedenle bu yönergeler her çeşit arka uç mimarisi için geçerlidir.
 
 # Geliştirme ortamını README.md dosyasında belgeleyin
 
