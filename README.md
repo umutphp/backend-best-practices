@@ -102,11 +102,11 @@ Yaptığımız çözümler için bir önemli seçim de çözümün nerde çalı�
 
 ## Kalıcı deplolama çözümleri
 
-Bu bölüm, kalıcı depolama çözümünün türünü seçmek için bazı kılavuzlar sağlamayı amaçlamaktadır. Seçim her zaman soruna göre uyarlanmalı ve bunların hiçbiri sihirli değnek değildir.
+Bu bölüm, kalıcı depolama çözümünün türünü seçmek için bazı kılavuzlar sağlamayı amaçlamaktadır. Seçim her zaman çözülmeye çalışılan soruna göre uyarlanmalı ve bunların hiçbirinin sihirli bir değnek olmadığı unutulmamalıdır.
 
 ### RDBMS
 
-Veri ve işlem bütünlüğü büyük bir gereksinim olduğunda veya çok sayıda veri analizi işlemi gerektiğinde PostgreSQL gibi ilişkisel bir veritabanı sistemi seçin. RDBMS seçeneklerinin [ACID uyumluluk](https://en.wikipedia.org/wiki/ACID), birleştirme ve dönüşüm fonksiyonları kararınızda yardımcı olacaktır.
+Veri ve işlem bütünlüğü büyük bir gereksinim olduğunda veya çok sayıda veri analizi işlemi gerektiğinde PostgreSQL gibi ilişkisel bir veritabanı sistemi seçin. RDBMS seçeneklerinin [ACID uyumlu olması](https://en.wikipedia.org/wiki/ACID), birleştirme ve dönüşüm fonksiyonları kararınızda yardımcı olacaktır.
 
 ### NoSQL
 
@@ -114,7 +114,7 @@ Yatay ölçeklemeyi beklediğinizde ve ACID kuralları gerekmediğinde bir NoSQL
 
 #### Belge tabanlı depolama çözümleri
 
-İçeriğe göre veya koleksiyona dahil edilerek kolayca adreslenebilen ve aranabilen belgeleri saklar. Bu veritabanı depolama formatını anladığı için mümkün olabiliyor. Sadece çok sayıda yapılandırılmış belgenin saklanması için kullanın. Dikkate değer örnekler:
+İçeriğe göre veya her hangi bir koleksiyona dahil edilerek kolayca adreslenebilen ve aranabilen belgeleri saklar. Bu işlev veritabanı, depolama formatını anladığı için mümkün olabiliyor. Sadece ve sadece çok sayıda yapılandırılmış belgenin saklanması için kullanın. Dikkate değer örnekler:
 
 * CouchDB
 * ElasticSearch
@@ -130,7 +130,7 @@ Anahtarları ile erişilebilen değerleri veya bazen de anahtar/değer çiftleri
 
 #### Grafik veritabanları
 
-Genel grafik veritabanları, bir grafiğin düğümlerini ve kenarlarını depolar ve herhangi bir düğümün komşularının indekssiz görünümlerini sağlar. En kısa yol veya çap gibi grafik benzeri sorguların çok önemli olduğu uygulamalar için kullanılabilir. Özelleşmiş grafik veritabanları veri kaydı için de kullanılabilir, örneğin. [RDF triples](https://en.wikipedia.org/wiki/Resource_Description_Framework).
+Genel grafik veritabanları, bir grafiğin düğümlerini ve kenarlarını depolayıp herhangi bir düğümün komşularının indekssiz ulaşılabilmesini sağlar. En kısa yol veya çap gibi grafik benzeri sorguların çok önemli olduğu uygulamalar için kullanılabilir. Özelleşmiş grafik veritabanları veri kaydı için de kullanılabilir. Örneğin, [RDF triples](https://en.wikipedia.org/wiki/Resource_Description_Framework).
 
 # Environments
 
