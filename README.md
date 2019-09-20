@@ -57,7 +57,7 @@ Arka uçta örnek yöntemler
 
 Bunlar, bu belgenin gönüllüler tarafından sağlanan çevirileridir. Herhangi bir çeviriyle ilgili yorumlarınız varsa, lütfen çevirinin sağlayıcısına başvurun.
 
-- [Turkish](https://github.com/umutphp/backend-best-practices) translation by [umutphp](https://github.com/umutphp)
+- [Türkçe](https://github.com/umutphp/backend-best-practices) çeviri [umutphp](https://github.com/umutphp) tarafından yapıldı.
 
 # N Emir
 
