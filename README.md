@@ -5,6 +5,7 @@ Arka uçta örnek yöntemler
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
+- [Belgenin çevirileri](#belgenin-çevirileri)
 - [N Emir](#n-emir)
 - [Buradaki yönergeler için genel noktalar](#buradaki-y%C3%B6nergeler-i%C3%A7in-genel-noktalar)
 - [Geliştirme ortamını README.md dosyasında belgeleyin](#geli%C5%9Ftirme-ortam%C4%B1n%C4%B1-readmemd-dosyas%C4%B1nda-belgeleyin)
@@ -51,6 +52,12 @@ Arka uçta örnek yöntemler
 - [Lisans](#lisans)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# Belgenin çevirileri
+
+Bunlar, bu belgenin gönüllüler tarafından sağlanan çevirileridir. Herhangi bir çeviriyle ilgili yorumlarınız varsa, lütfen çevirinin sağlayıcısına başvurun.
+
+- [Turkish](https://github.com/umutphp/backend-best-practices) translation by [umutphp](https://github.com/umutphp)
 
 # N Emir
 
