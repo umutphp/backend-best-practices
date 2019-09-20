@@ -221,7 +221,7 @@ Mümkün olduğunda (vakaların büyük çoğunluğunda olması gerekir), şifre
 
 ## Denetim Logları
 
-Hassas verileri işleyen uygulamalarda, özellikle belirli kullanıcıların nispeten geniş bir erişime veya denetime izin verildiği yerlerde, bir tür denetim logları tutmak iyi olur - sistemde gerçekleşen bir dizi eylem/olayı olay/kaynak başlatıcı ile birlikte depolamak iyidir. (kullanıcı, otomasyon işleri, vb). Örneğin:
+Hassas verileri işleyen uygulamalarda, özellikle belirli kullanıcıların nispeten geniş bir erişime veya denetime izin verildiği yerlerde, bir tür denetim logları tutmak iyi olur - sistemde gerçekleşen bir dizi eylem/olayı olay/yapan ile birlikte depolamak iyidir. (kullanıcı, otomasyon işleri, vb). Örneğin:
 
     2012-09-13 03:00:05 Job "daily_job" performed action "delete old items".
     2012-09-13 12:47:23 User "admin_user" performed action "delete item 123".
@@ -229,9 +229,9 @@ Hassas verileri işleyen uygulamalarda, özellikle belirli kullanıcıların nis
     2012-09-13 13:02:11 User "sneaky_user" performed action "view confidential page 567".
     ...
 
-Günlük, basit bir metin dosyası olabilir veya bir veritabanında saklanabilir. En azından bu üç öğeye sahip olmak iyidir: kesin bir zaman damgası, eylem/olay yaratıcısı (bunu yapan kişi) ve fiili eylem/olay (ne yapıldığı). Günlüğe kaydedilecek kesin işlemler elbette uygulamanın kendisi için neyin önemli olduğuna bağlıdır.
+Log, basit bir metin dosyası olabilir veya bir veritabanında saklanabilir. En azından bu üç öğeye sahip olması iyidir: kesin bir zaman damgası, eylem/olay yaratıcısı (bunu yapan kişi) ve fiili eylem/olay (ne yapıldığı). Loga kaydedilecek işlemler elbette uygulamanın kendisi için neyin önemli olduğuna bağlıdır.
 
-Denetim günlüğü normal uygulama günlüğünün bir parçası olabilir, ancak burada vurgulanan şey, yalnızca belirli bir eylemin gerçekleştirilip gerçekleştirilmediğini yapan ve kimin yaptığını günlüğe kaydetmektir. Mümkünse, denetim günlüğü kurcalamaya karşı korumalı, örn. yalnızca özel bir günlük kaydı işlemi veya kullanıcı tarafından erişilebilir ama doğrudan uygulama tarafından erişilebilir olmamalıdır.
+Denetim logu normal uygulama logunun bir parçası olabilir, ancak burada vurgulanan şey, yalnızca belirli bir eylemin gerçekleştirilip gerçekleştirilmediğini ve kimin yaptığını günlüğe kaydetmektir. Mümkünse, denetim logu kurcalamaya karşı korumalı, örn. yalnızca özel bir log kaydı işlemi veya kullanıcı tarafından erişilebilir olmalıdır ama doğrudan uygulama tarafından erişilebilir olmamalıdır.
 
 ## Şüpheli Eylem Kısıtlama ve/veya engelleme
 
