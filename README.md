@@ -83,14 +83,14 @@ Geliştirme ortamının ilgili tüm parçalarını ve bağımlılıklarını kal
 # Veriyi kalıcı olarak depolama
 ## Genel değerlendirmeler
 
-Kullandığınız veri deplolama çözümünden bağımsız olarak aklınızda tutmanız gereken bazı değerlendirmeler:
+Kullandığınız veri deplolama çözümünden bağımsız olarak aklınızda tutmanız gereken bazı noktalar:
 
 * Çalıştığına emin olduğunız yedekler tutun
 * Bir ortamdan diğerine veri kopyalabilmenizi sağlayan betikler ve araçlara sahip olun, örneğin oluşan bir hatayı tekrarlamak için canlıdan canlı öncesi ortamlara (stage vs.)
 * Kalıcı deplolama sistemlerinin gerekli güncellemelerini yapmak için bir planınız olsun (veritabanı sunucusu güvenlik güncellemeleri vs.)
 * Dikey ölçekleme yaparken planınız olsun
 * Veri yapısı değişiklikleri için bir planınız olsun
-* Kalıcı veri çözümünüzü sürekli izleyebildiğiniz çalışan bir gözleme yapınız olsun
+* Depolama sistemini sürekli izleyebildiğiniz çalışan bir gözleme yapınız olsun
 
 ## SaaS, bulutta sunucu ya da kendi sunucunuz?
 
