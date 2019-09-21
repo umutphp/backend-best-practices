@@ -201,27 +201,27 @@ Muhtemelen gizli verileri yönetmenin en kolay yolu, onları ihtiyaç duyan sunu
 
 ## Giriş Kısıtlama
 
-Belli bir süre içinde kişi başına izin verilen giriş denemesi miktarına sınırlamalar koyun. Belirli sayıda başarısız denemeden sonra bir kullanıcı hesabını belirli bir süre için kilitleyin. (örneğin, 20 hatalı giriş denemesi sonrasında 5 dakika hesabı kitleyebilirsiniz).
+Belli bir süre içinde kişi başına izin verilen giriş denemesi sayısına sınır koyun. Belirli sayıda başarısız denemeden sonra bir kullanıcı hesabını bir süre için kilitleyin. (Örneğin, 20 hatalı giriş denemesi sonrasında 5 dakika hesabı kitleyebilirsiniz).
 
-Bu önlemlerin amacı, kullanıcı adlarına/şifrelerine karşı online kaba kuvvet saldırılarını olanaksız kılmaktır.
+Bu önlemlerin amacı, kullanıcı adlarına/şifrelerine karşı kaba kuvvet saldırılarını olanaksız kılmaktır.
 
 ## Kullanıcı Şifreleri Depolanması
 
-> Asla şifreleri düz metinler olarak tutmayın!
+> Asla şifreleri düz metin olarak tutmayın!
 
-Eğer uygulama / sistem tarafından gerekli değilse, şifreleri asla geri çevirilebilir şifreleme yöntemleri ile kaydetmeyin. Konu ile ilgili güzel bir makale: https://crackstation.net/hashing-security.htm
+Eğer uygulama/sistem için gerekli değilse, şifreleri asla geri çevirilebilir şifreleme yöntemleri ile saklamayın. Konu ile ilgili güzel bir makale: https://crackstation.net/hashing-security.htm
 
-Veritabanından düz metin parolaları elde etmeniz gerekiyorsa, takip etmeniz gereken bazı öneriler şöyledir.
+Veritabanından parolaları düz metin olarak çekmeniz gerekiyorsa, takip etmeniz gereken bazı öneriler şöyledir.
 
-Şifreler sık sık tekrar tekrar düz metne dönüştürülmezse (örneğin özel prosedür gerekiyorsa), şifre çözme anahtarlarını veritabanına düzenli olarak erişen uygulamadan uzak tutun.
+Şifreler sık sık, tekrar tekrar düz metne dönüştürülmesi gerekmiyorsa (örneğin özel prosedür gerekiyorsa), şifre çözme anahtarlarını veritabanına düzenli olarak erişen uygulamadan uzak tutun.
 
-Şifrelerin hala düzenli olarak şifrelerinin çözülmesi gerekiyorsa, şifre çözme işlevini ana uygulamadan mümkün olduğu kadar ayırın (örneğin, ayrı bir sunucu bir şifrenin şifresini çözme isteklerini kabul eder, azaltma, yetkilendirme, vb. gibi daha yüksek bir kontrol düzeyi uygular).
+Eğer şifrelerin düzenli olarak düz metne dönüştürülmesi gerekiyorsa, şifre çözme işlevini ana uygulamadan mümkün olduğu kadar ayırın (örneğin, ayrı bir sunucu bir şifrenin şifresini çözme isteklerini kabul eder, azaltma, yetkilendirme, vb. gibi daha yüksek bir kontrol düzeyi uygular).
 
-Mümkün olduğunda (vakaların büyük çoğunluğunda olması gerekir), şifreleri iyi bir rastgele değere sahip iyi bir tek yönlü şifreleme kullanarak depolayın. Ve kesinlikle diyebiliriz ki, SHA-1 bu bağlamda bir şifreleme işlevi için iyi bir seçim değildir. Parolalar göz önünde bulundurularak tasarlanan şifreleme işlevler kasıtlı olarak daha yavaştır, bu da çevrimdışı kaba kuvvet saldırılarını daha fazla zaman alan ve dolayısıyla daha az uygulanabilir kılar. Daha detaylı bilgi için: http://security.stackexchange.com/questions/211/how-to-securely-hash-passwords/31846#31846
+Mümkün olduğunda (vakaların büyük çoğunluğunda olması gerekir), şifreleri güçlü bir rastgele değere sahip tek yönlü bir şifreleme yöntemi kullanarak depolayın. Ve kesinlikle diyebiliriz ki, SHA-1 bu bağlamda bir şifreleme işlemi için iyi bir seçim değildir. Parolalar göz önünde bulundurularak tasarlanan şifreleme yöntemleri kasıtlı olarak daha yavaştır, bu da çevrimdışı kaba kuvvet saldırılarını daha fazla zaman alan ve dolayısıyla daha az uygulanabilir kılar. Daha detaylı bilgi için: http://security.stackexchange.com/questions/211/how-to-securely-hash-passwords/31846#31846
 
 ## Denetim Logları
 
-Hassas verileri işleyen uygulamalarda, özellikle belirli kullanıcıların nispeten geniş bir erişime veya denetime izin verildiği yerlerde, bir tür denetim logları tutmak iyi olur - sistemde gerçekleşen bir dizi eylem/olayı olay/yapan ile birlikte depolamak iyidir. (kullanıcı, otomasyon işleri, vb). Örneğin:
+Hassas verileri işleyen uygulamalarda, özellikle de belirli kullanıcıların nispeten geniş bir erişime veya denetime izin verildiği yazılımlarda, bir tür denetim logları tutmak iyi olur - sistemde gerçekleşen eylem veya olayı olay ve yapan bilgisi ile birlikte depolamak iyidir (kullanıcı, otomasyon işleri, vb). Örneğin:
 
     2012-09-13 03:00:05 Job "daily_job" performed action "delete old items".
     2012-09-13 12:47:23 User "admin_user" performed action "delete item 123".
@@ -229,26 +229,25 @@ Hassas verileri işleyen uygulamalarda, özellikle belirli kullanıcıların nis
     2012-09-13 13:02:11 User "sneaky_user" performed action "view confidential page 567".
     ...
 
-Log, basit bir metin dosyası olabilir veya bir veritabanında saklanabilir. En azından bu üç öğeye sahip olması iyidir: kesin bir zaman damgası, eylem/olay yaratıcısı (bunu yapan kişi) ve fiili eylem/olay (ne yapıldığı). Loga kaydedilecek işlemler elbette uygulamanın kendisi için neyin önemli olduğuna bağlıdır.
+Bu log basit bir metin dosyası olabilir veya veritabanında saklanabilir. En azından bu üç öğeye sahip olması iyidir: kesin bir zaman damgası, eylem/olay yaratıcısı (bunu yapan kişi) ve eylem/olay (ne yapıldığı). Loga kaydedilecek işlemler elbette uygulamanın kendisi için neyin önemli olduğuna bağlıdır.
 
-Denetim logu normal uygulama logunun bir parçası olabilir, ancak burada vurgulanan şey, yalnızca belirli bir eylemin gerçekleştirilip gerçekleştirilmediğini ve kimin yaptığını günlüğe kaydetmektir. Mümkünse, denetim logu kurcalamaya karşı korumalı, örn. yalnızca özel bir log kaydı işlemi veya kullanıcı tarafından erişilebilir olmalıdır ama doğrudan uygulama tarafından erişilebilir olmamalıdır.
+Denetim logu normal uygulama logunun bir parçası olabilir, ancak burada vurgulanan şey yalnızca belirli bir eylemin gerçekleştirilip gerçekleştirilmediğini ve kimin yaptığını günlüğe kaydetmektir. Mümkünse denetim logu kurcalamaya karşı korumalı ve doğrudan uygulama tarafından erişilebilir olmamalıdır (Örneğin, yalnızca özel bir log işlemi veya kullanıcı tarafından erişilebilir olmalıdır).
 
 ## Şüpheli Eylem Kısıtlama ve/veya engelleme
 
-Bu, Login Throttling'in genelleştirilmesi olarak görülebilir, bu böl
-m uygulama bağlamında "şüpheli" kabul edilen keyfi eylemler için benzer mekanizmaları anlatıyor. Örneğin, normal kullanıcıların önemli miktarda bilgiye erişmesine izin veren, ancak kullanıcıların yalnızca bu bilgilerin küçük bir alt kümesiyle ilgilenmelerini bekleyen bir ERP sistemi, beklenen veri setlerinden çok daha hızlı veri girişimlerini sınırlayabilir. Örneğin, Kullanıcıların aynı anda bir veya iki müşteride çalışması gerekiyorsa, kullanıcıların tüm müşterilerin listesini indirmelerini engelleyin. Bunun, erişimi tamamen sınırlamaktan farklı olduğunu unutmayın; kullanıcıların herhangi bir müşteri hakkında bilgi almalarına izin verilir ama aynı anda bütün müşterilerin değil. Sisteme bağlı olarak, kısıtlama yeterli olmayabilir - öreğin. bir kişi tüm kaynaklar üzerinde tek bir istekle işlem başlattığında. O zaman tamamen kısıtlama gerekli olabilir. Tam müşteri bilgilerini almak için bir kerede bir müşteri olmak üzere 10 saniyede 1000 istek yapmak ile ve bu bilgileri bir kerede almak için tek bir istek yapmak arasında farkı not edin.
+Bu bölüm giriş kısıtlamasının genelleştirilmesi olarak görülebilir ve uygulama bağlamında "şüpheli" kabul edilen keyfi eylemler için benzer mekanizmaları anlatıyor. Örneğin, normal kullanıcıların önemli miktarda bilgiye erişmesine izin veren, ancak kullanıcıların yalnızca bu bilgilerin küçük bir alt kümesiyle ilgilenmelerini bekleyen bir ERP sistemi, beklenen veri setlerinden çok daha hızlı veri girişimlerini sınırlayabilir. Örneğin, kullanıcıların aynı anda bir veya iki müşteride çalışması gerekiyorsa, kullanıcıların tüm müşterilerin listesini indirmelerini engelleyin. Bunun, erişimi tamamen sınırlamaktan farklı olduğunu unutmayın; kullanıcıların herhangi bir müşteri hakkında bilgi almalarına izin verilir ama aynı anda bütün müşterilerin değil. Sisteme bağlı olarak, kısıtlama yeterli olmayabilir. Örneğin, bir kişi tüm kaynaklar üzerinde tek bir istekle işlem başlattığında. O zaman tamamen kısıtlama gerekli olabilir. Tüm müşteri bilgilerini almak için bir kerede bir müşteri olmak üzere 10 saniyede 1000 istek yapmak ile ve bu bilgileri bir kerede almak için tek bir istek yapmak arasında farka dikkat edin.
 
 Örneğin, bir sistemde 10000 kayıt silmek tamamen meşru bir işlem olabilir, ancak diğerinde de olmayabilir.
 
 ## Anonim Veriler
 
-Ne zaman büyük veri setleri üçüncü şahıslara ihraç edildiğinde ve verilerin kullanım amacı göz önüne alındığında veriler mümkün olduğunca anonimleştirilmelidir. Örneğin, bir üçüncü taraf hizmeti bir müşteri veritabanında genel istatistiksel analiz sağlayacaksa, muhtemelen bireysel müşterilerin isimlerini, adreslerini veya diğer kişisel bilgilerini bilmesi gerekmez. Genel müşteri kimlik numarası bile, veri kümesine bağlı olarak çok açık olabilir. Bu yazıya bir göz atabilirsiniz: http://arstechnica.com/tech-policy/2009/09/your-secrets-live-online-in-databases-of-ruin/.
+Ne zaman veri setleri üçüncü şahıslara ihraç edildiğinde, kullanım amacı göz önüne alındığınarak veriler mümkün olduğunca anonimleştirilmelidir. Örneğin, bir üçüncü taraf hizmeti bir müşteri veritabanında genel istatistiksel analiz sağlayacaksa, muhtemelen bireysel müşterilerin isimlerini, adreslerini veya diğer kişisel bilgilerini bilmesi gerekmez. Genel müşteri kimlik numarası bile, veri kümesine bağlı olarak çok açık olabilir. Bu yazıya bir göz atabilirsiniz: http://arstechnica.com/tech-policy/2009/09/your-secrets-live-online-in-databases-of-ruin/.
 
 Kullanıcı adı gibi kişisel olarak tanımlanabilecek bilgileri loglamaktan kaçının.
 
-Loglarınız hassas bilgiler içeriyorsa, loglarınızın nasıl korunduğunu ve bulutta barındırılan log yönetim sistemleri durumunda da nerede olduklarını bildiğinizden emin olun.
+Loglarınız hassas bilgiler içeriyorsa, loglarınızın nasıl korunduğunu ve bulutta barındırılan log yönetim sistemleri kullanıdığınız durumda da logların nerede tutulduklarını bildiğinizden emin olun.
 
-Hassas bilgileri günlüğe kaydetmeniz gerekiyorsa, günlüğe kaydetmeden önce şifrelemeyi deneyin böylece işlemin farklı bölümleri arasında aynı varlığı tanımlayabilirsiniz.
+Hassas bilgileri günlüğe kaydetmeniz gerekiyorsa, günlüğe kaydetmeden önce şifrelemeyi deneyin böylece işlemin farklı bölümleri arasında aynı değerleri tanımlayabilirsiniz.
 
 ## Geçici dosya depolama
 
