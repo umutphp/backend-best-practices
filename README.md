@@ -164,13 +164,13 @@ Canlı öncesi (prova da denilebilir) ortam tam olarak canlı gibi yapılandır�
 
 # Malzeme Listesi
 
-Bu liste her derleme/build sonrası oluşan artifact içine dahil edilmeli ve aşağıdakileri içermeli:
+Bu liste her derleme/build sonrası oluşan sonuç paketi içine dahil edilmeli ve aşağıdakileri içermeli:
 
-1. Kritik araçların ya da SDK'nın hangi versiyonları  kullanıldı
-1. Hangi bağımlılıklar dahil edilmiştir
-1. Sonucun global olarak benzersiz bir sürüm numarası (örneğin git SHA-1)
+1. Kritik araçların ya da SDK'nın hangi versiyonları kullanıldığı
+1. Hangi bağımlılıkları dahil edildiği
+1. Sonuç pakitin global olarak benzersiz bir sürüm numarası (örneğin git commit SHA-1 numarası)
 1. Paketi oluştururken kullanılan ortam ve değişkenler
-1. Fail eden test ve kontrollerin listesi
+1. Hata oluşturan eden test ve kontrollerin listesi
 
 
 # Güvenlik
