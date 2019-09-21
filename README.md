@@ -175,7 +175,7 @@ Bu liste her derleme/build sonrası oluşan sonuç paketi içine dahil edilmeli 
 
 # Güvenlik
 
-Olası güvenlik tehditleri ve sorunlarının farkında olun. En azından OWASP Top 10 güvenlik açıklarına aşina olmanız ve kullandığınız üçüncü taraf yazılımlardaki güvenlik açıklarını takip etmeniz gerekir.
+Olası güvenlik tehditleri ve sorunlarının farkında olun. En azından "OWASP Top 10" güvenlik açıklarına aşina olmanız ve kullandığınız üçüncü taraf yazılımlardaki güvenlik açıklarını takip etmeniz gerekir.
 
 Kabul edilebilir genel güvenlik kuralları şöyle olabilir:
 
