@@ -261,7 +261,7 @@ Başlangıçta paylaşımsız bir sunucuda çalışmaya başlasanız bile uygula
 
 * uygulamanızın kaynak kodu
 * veri dizinleri
-* geçici dosya depolama dizinleri (genellikle ön tanımlı sistem dizinleri (/tmp vs) kullanılır - bir önceki bölüme bakabilirsiniz)
+* geçici dosya depolama dizinleri (genellikle ön tanımlı sistem dizinleri (`/tmp` vs) kullanılır - bir önceki bölüme bakabilirsiniz)
 * ayar dosyaları
 * sürüm kontrol sistemlerinin ayar dizinleri - .git, .hg, .svn, vs.
 * başlangıç betikleri (başlangıç değişkenleri ve gizli bilgilerini içerebilir vs)
@@ -272,17 +272,17 @@ Başlangıçta paylaşımsız bir sunucuda çalışmaya başlasanız bile uygula
 
 Bazen bazı dosyalar başka sistem kullanıcıları tarafından da okunması gerekir (örneğin, apache tarafından yayınlanan dosyalar). Bu durumda, sadece gerekli olan kullanıcıların erişmesine izin verin.
 
-UNIX/Linux dosya sistemlerinde yazma izninin çok güçlü bir izin olduğunu unutmayın, çünkü bu izin silme yetkisini de kapsıyor ve bir dosyanın silinip yeniden oluşturularak tamamen değiştirilmesine sebep olabilir. /tmp ve /var/tmp dizinleri üzerinde ayarlanması gereken yapışkan bit (sticky bit) nedeniyle bu etkiden ön tanımlı olarak güvenlidir.
+UNIX/Linux dosya sistemlerinde yazma izninin çok güçlü bir izin olduğunu unutmayın, çünkü bu izin silme yetkisini de kapsıyor ve bir dosyanın silinip yeniden oluşturularak tamamen değiştirilmesine sebep olabilir. `/tmp` ve `/var/tmp` dizinleri üzerinde ayarlanması gereken yapışkan bit (sticky bit) nedeniyle bu etkiden ön tanımlı olarak güvenlidir.
 
 Bunlara ek olarak, gizli veriler bölümünde anlatıldığı gibi dosya izinleri sürüm kontrol sistemlerinde korunmayabilir. Başlangıçta siz düzgün bir şekilde ayarlamış olsanız bile checkout/update gibi komutlar dosya izinlerini değiştirebilirler. Bunun için en güzel çözümlerden biri de bir Makefile, bir betik, sürüm kontrol sisteminde bir kanca işlevi ya da bunlara benzer bir yapı ile her zaman dosya izinlerini olması gereken değerlere güncellemektir.
 
 # Uygulama takibi
 
-Uygulamanızın tam anlamıyla durumunu takip edebilmek için hem işletim sistemi seviyesinde hem de uygulamanıza özel kontroller yapmalısınız. İşletim sistemi seviyesinde yapılacak kontroller CPU, depolama, hafıza kullanımı, çalışan uygulamalar, açık portlar vs gibi kontrolleri içerir. Ancak, uygulamaya özel kontroller hizmet çalışması açısından daha önemlidir. Bu kontroller "bu URL cevap veriyor mu ve HTTP 200 dönüyor mu" gibi kontrollerden başlayıp veritabanı bağlantısından veri tutarlılığına kadar genişleyebilir.
+Uygulamanızın tam anlamıyla durumunu takip edebilmek için hem işletim sistemi seviyesinde hem de uygulamanıza özel kontroller yapmalısınız. İşletim sistemi seviyesinde yapılacak kontroller CPU, depolama, hafıza kullanımı, çalışan uygulamalar, açık portlar vs gibi kontrolleri içerir. Ancak, uygulamaya özel kontroller verilen hizmet açısından daha önemlidir. Bu kontroller "bu URL cevap veriyor mu ve HTTP 200 dönüyor mu" gibi kontrollerden başlayıp veritabanı bağlantısından veri tutarlılığına kadar genişleyebilir.
 
-Bu bölüm, uygulamaya özel kontrollerin uygulanmasının, genel uygulama sağlığının izlenmesini kolaylaştıracak ve somut uygulama bağlamında hangi kontrollerin anlamlı olduğunu belirlemek için uygulama geliştiricilerine tam kontrol sağlayan yöntemleri açıklamaktadır.
+Bu bölüm, uygulama sağlığının izlenmesini kolaylaştıracak kontrollerin oluşturulmasının ve somut uygulama bağlamında hangi kontrollerin anlamlı olduğunu belirlemek için geliştiricilere tam kontrol sağlayan yöntemleri açıklamaktadır.
 
-İşin özünde, en güzel yol uygulamanın durumu hakkında toplu bir bilgi veren tek bir erişim noktası (uyuglamada çalışan bir URL) olmasıdır.  Bunun uygulama içinde yapılması gerekir ve proje ekibinin dahil olması gereklidir, çünkü proje ekibi uygulamanın OK durumunun ne olduğunu ve ERROR durumunun ne olduğunu gerçekten tanımlayabilen ekiptir.
+İşin özünde, en güzel yol uygulamanın durumu hakkında toplu bir bilgi veren tek bir erişim noktası (uygulama üzerinde çalışan bir URL) olmasıdır. Bunun uygulama içinde yapılması gerekir ve proje ekibinin dahil olması gereklidir, çünkü proje ekibi uygulamanın `OK` durumunun ne olduğunu ve `ERROR` durumunun ne olduğunu gerçekten tanımlayabilen ekiptir.
 
 Uygulama, herhangi bir sayıda "alt sistem" kontrolü de uygulayabilir. Örneğin,
 
