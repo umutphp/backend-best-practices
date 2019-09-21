@@ -5,7 +5,7 @@ Arka uçta örnek yöntemler
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [Belgenin çevirileri](#belgenin-çevirileri)
+- [Belgenin çevirileri](#belgenin-%C3%A7evirileri)
 - [N Emir](#n-emir)
 - [Buradaki yönergeler için genel noktalar](#buradaki-y%C3%B6nergeler-i%C3%A7in-genel-noktalar)
 - [Geliştirme ortamını README.md dosyasında belgeleyin](#geli%C5%9Ftirme-ortam%C4%B1n%C4%B1-readmemd-dosyas%C4%B1nda-belgeleyin)
@@ -18,7 +18,7 @@ Arka uçta örnek yöntemler
       - [Belge tabanlı depolama çözümleri](#belge-tabanl%C4%B1-depolama-%C3%A7%C3%B6z%C3%BCmleri)
       - [Anahtar-değer depolama çözümleri](#anahtar-de%C4%9Fer-depolama-%C3%A7%C3%B6z%C3%BCmleri)
       - [Grafik veritabanları](#grafik-veritabanlar%C4%B1)
-- [Environments](#environments)
+- [Geliştirme Ortamları](#geli%C5%9Ftirme-ortamlar%C4%B1)
   - [Lokal geliştirme ortamı](#lokal-geli%C5%9Ftirme-ortam%C4%B1)
   - [CI ortamı](#ci-ortam%C4%B1)
   - [Test ortamı](#test-ortam%C4%B1)
@@ -132,7 +132,7 @@ Anahtarları ile erişilebilen değerleri veya bazen de anahtar/değer çiftleri
 
 Genel grafik veritabanları, bir grafiğin düğümlerini ve kenarlarını depolayıp herhangi bir düğümün komşularının indekssiz ulaşılabilmesini sağlar. En kısa yol veya çap gibi grafik benzeri sorguların çok önemli olduğu uygulamalar için kullanılabilir. Özelleşmiş grafik veritabanları veri kaydı için de kullanılabilir. Örneğin, [RDF triples](https://en.wikipedia.org/wiki/Resource_Description_Framework).
 
-# Environments
+# Geliştirme Ortamları
 
 Bu bölüm en az kaç geliştirme ortamına sahip olmanız gerektiğini açıklamaya çalışıyor. Başlangıçta size çok gelebilir [ama hepsinin bir amacı var](http://futurice.com/blog/five-environments-you-cannot-develop-without).
 
