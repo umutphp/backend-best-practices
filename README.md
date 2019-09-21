@@ -251,11 +251,11 @@ Hassas bilgileri günlüğe kaydetmeniz gerekiyorsa, günlüğe kaydetmeden önc
 
 ## Geçici dosya depolama
 
-Uygulamanızın geçici dosyaları nerede sakladığını bildiğinizden emin olun. Genel olarak erişilebilen dizinleri (muhtemelen varsayılanıdır) `/tmp` ve` /var/tmp` gibi kullanıyorsanız, dosyalarınızı mod 600 ile oluşturduğunuzdan emin olun, böylece sadece uygulamanızın çalıştığı sistem kullanıcısı tarafından okunabilir. Alternatif olarak, geçici dosyaları saklamak için korumalı bir dizine (sadece uygulama kullanıcısı tarafından erişilebilir dizin) sahip olabilirsiniz.
+Uygulamanızın geçici dosyaları nerede sakladığını bildiğinizden emin olun. Genel olarak erişilebilen dizinleri (muhtemelen varsayılanıdır) `/tmp` ve` /var/tmp` gibi kullanıyorsanız, dosyalarınızı `mod 600` ile oluşturduğunuzdan emin olun, böylece sadece uygulamanızın çalıştığı sistem kullanıcısı tarafından okunabilir. Alternatif olarak, geçici dosyaları saklamak için korumalı bir dizine (sadece uygulama kullanıcısı tarafından erişilebilir dizin) sahip olabilirsiniz.
 
 ## Paylaşımsız vs Paylaşımlı sunucu ortamı
 
-Güvenlik tehditleri uygulamanın paylaşımlı ya da paylaşımsız sunucular üzerinde çalışmasına bağlı olarak farklılıklar gösterir. Paylaşımlı demek sunucu üzerinde başka uygulamalar da (üçüncü şahıslara ait olmasına gerek yok) çalışıyor demektir. Paylaşımlı sunucularda doğru dosya izinlerinin olması kritiktir, çünkü bir hata olması durumunda uygulama kaynak kodları, veri dosyaları, geçici dosyalar, loglar gibi bilgiler görmemesi gereken kişilere görünür olabilir. Ayrıca diğer uygulamalardaki bir güvenlik açığı sizin uygulamanızızn açığa çıkmasına da sebebp olabilir.
+Güvenlik tehditleri uygulamanın paylaşımlı ya da paylaşımsız sunucular üzerinde çalışmasına bağlı olarak farklılıklar gösterir. Paylaşımlı demek sunucu üzerinde başka uygulamalar da (üçüncü şahıslara ait olmasına gerek yok) çalışıyor demektir. Paylaşımlı sunucularda doğru dosya izinlerinin olması kritiktir, çünkü bir hata olması durumunda uygulama kaynak kodları, veri dosyaları, geçici dosyalar, loglar gibi bilgiler görmemesi gereken kişilere görünür olabilir. Ayrıca diğer uygulamalardaki bir güvenlik açığı sizin uygulamanızın açığa çıkmasına da sebep olabilir.
 
 Başlangıçta paylaşımsız bir sunucuda çalışmaya başlasanız bile uygulamanızın ileride nasıl bir ortamda ya da sunucuda çalışacağına hiçbir zaman emin olamazsınız. Örneğin, sunucuya ileride başka uygulamalar da yüklenebilir. Bunun içindir ki, en iyi plan uygulamanızın her zaman paylaşımlı bir sunucuda çalışacağını düşünmek ve önlemleri ona göre almaktır. İşte düşünmeniz gereken dosyaların/dizinlerin ayrıntılı bir listesi:
 
@@ -266,7 +266,7 @@ Başlangıçta paylaşımsız bir sunucuda çalışmaya başlasanız bile uygula
 * sürüm kontrol sistemlerinin ayar dizinleri - .git, .hg, .svn, vs.
 * başlangıç betikleri (başlangıç değişkenleri ve gizli bilgilerini içerebilir vs)
 * log dosyaları
-* çöküş raporları
+* hata raporları
 * özel anahtar dosyalar (SSL, SSH, vs)
 * vs.
 
@@ -274,7 +274,7 @@ Bazen bazı dosyalar başka sistem kullanıcıları tarafından da okunması ger
 
 UNIX/Linux dosya sistemlerinde yazma izninin çok güçlü bir izin olduğunu unutmayın, çünkü bu izin silme yetkisini de kapsıyor ve bir dosyanın silinip yeniden oluşturularak tamamen değiştirilmesine sebep olabilir. /tmp ve /var/tmp dizinleri üzerinde ayarlanması gereken yapışkan bit (sticky bit) nedeniyle bu etkiden ön tanımlı olarak güvenlidir.
 
-Bunlara ek olarak, gizli veriler bölümünde anlatıldığı gibi dosya izinleri sürüm kontrol sistemlerinde korunmayabilir. Başlangıçta siz düzgün bir şekilde ayarlamış olsanız bile checkout/update gibi komutlar dosya izinlerini değiştirebilirler. Bunun için en güzel çözümlerden biri de bir Makefile, bir betik, sürüm kontrol sisteminde bir kanca işlevi ya da bunlara benzer bir yapı ile her zaman dosya izinlerini güncellemektir.
+Bunlara ek olarak, gizli veriler bölümünde anlatıldığı gibi dosya izinleri sürüm kontrol sistemlerinde korunmayabilir. Başlangıçta siz düzgün bir şekilde ayarlamış olsanız bile checkout/update gibi komutlar dosya izinlerini değiştirebilirler. Bunun için en güzel çözümlerden biri de bir Makefile, bir betik, sürüm kontrol sisteminde bir kanca işlevi ya da bunlara benzer bir yapı ile her zaman dosya izinlerini olması gereken değerlere güncellemektir.
 
 # Uygulama takibi
 
