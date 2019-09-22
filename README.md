@@ -320,7 +320,7 @@ Düz formatta her satır `anahtar: değer` şeklinde bir durumu  belirtir. Anaht
 
 Burada ki `Mesaj` metinleri durumun ne olduğunu anlatabilecek anlamlı kısa metinler olmalı. Mesaj metinleri tek satır olmalı, herhangi bir uzunluk kısıtlamasına tabi olmamalı ama mantıklı bir uzunluk olması tercih edilmelidir. Örneğin, 200 karakterden uzun olmamalı denebilir.
 
-Ana durum sayfası `status` adlı değerinde bütün sistemin durumunu belirten bir anahtar bulundurmalı. Bunun dışında alt sistemler için olan satırlar zorunlu değildir. Eğer kullanılacaksa bu satırların anahtarında `_status` ekleri olmalı:
+Ana durum sayfası `status` adlı, değerinde bütün sistemin durumunu belirten bir anahtar bulundurmalı. Bunun dışında alt sistemler için olan satırlar zorunlu değildir. Eğer kullanılacaksa bu satırların anahtarında `_status` ekleri olmalı:
 
 Herşey düzgün çalışıyorsa:
 
@@ -368,7 +368,7 @@ elastic_search_status: OK
 elastic_search_shards: 20
 ```
 
-Alt sistem durum sayfaları da kendi adreslerine (`/status/subsystemX`) sahip olmalılar ve aynı formatı uygulamalılar; zorunlu `status` anahtarını bulundurmalılar ve gerekiyorda başka anahları da bulundurabilirler. Örneğin `/status/database`:
+Alt sistem durum sayfaları da kendi adreslerine (`/status/subsystemX`) sahip olmalılar ve aynı formatı uygulamalılar; zorunlu `status` anahtarını bulundurmalılar ve gerekiyorsa başka anahları da bulundurabilirler. Örneğin `/status/database`:
 
 ```
 status: OK
@@ -436,9 +436,9 @@ Eğer uygulama sağlıklı ve ayakta ise, durum sayfasının cevabının HTTP ko
 
 ## Yük dengeleyici kontrolleri
 
-Bzen uygulamalar yük dengeleyicelerin arkasında çalışır. Yük dengeleyiciler arkalarındaki uygulamaları basitce bir URL çağırarak kontrol ederler. Bu kotroller dengeleyicilerin bir uygulama sunucusunda sorun olması durumunda o sunucuya trafik göndermemelerini sağlar.
+Bazen uygulamalar yük dengeleyicelerin arkasında çalışır. Yük dengeleyiciler arkalarındaki uygulamaları basitce bir URL çağırarak kontrol ederler. Bu kontroller dengeleyicilerin bir uygulama sunucusunda sorun olması durumunda o sunucuya trafik göndermemelerini sağlar.
 
-Uygulamamızın genel `/status` sayfası dengeleyicilerin kontrol URL'si olarak kullanması için oldukça uygundur. Bunun yanında sadece dengeleyicilere özel bir durum sayfası yapmak da fayda sağlayabilir. Bu sayfa denegeleyicinin bakışına göre durumu ifadelendirerek şekillendirilebilir. Örneğin, genel durum için oldukça kötü olarak değerlendirilen bir hata, denegeleyici için aynı mantıkla değerlendirilemeyebilir ve sunucunun dengeleyici havuzundan çıkmaması sağlanabilir bu sayede. Buna güzel bir örnek de harici servislerin hata vermesi durumudur ve bu durumda sunucu kötü durumda olarak değerlendirilip havuzdan çıkarılamaz.
+Uygulamamızın genel `/status` sayfası dengeleyicilerin kontrol URL'si olarak kullanması için oldukça uygundur. Bunun yanında sadece dengeleyicilere özel bir durum sayfası yapmak da faydalı olabilir. Bu sayfa denegeleyicinin bakışına göre durumu ifadelendirerek şekillendirilebilir. Örneğin, genel durum için oldukça kötü olarak değerlendirilen bir hata, denegeleyici için aynı mantıkla değerlendirilemeyebilir ve bu sayede sunucunun dengeleyici havuzundan çıkmaması sağlanabilir. Buna güzel bir örnek de harici servislerin hata vermesi durumudur ve bu durumda sunucu kötü durumda olarak değerlendirilip havuzdan çıkarılamaz.
 
 Denegeleyici için hazırladığınız sayfanın URL'si `/status/health` olabilir. Kullandığınız dengeleyici çözümüne göre sayfanın formatı burada bahsettiğimiz formatlardan farklı olabilir. Örneğin bazı yük dengeleyiciler sadece HTTP kodlarına bakarlar.
 
@@ -452,7 +452,7 @@ Durum sayfaları eğer hassas hata ayıklama ya da uygulama bilgileri veriyorlar
 
 ## Sorumluluk kontrol listesi
 
-Özellikle birden fazla ekibin yer aldığı büyük projelerde her grubun ve sorumluğun takibini yapmak önemlidir. Aşağıdaki tablo bir web sayfasının canlıya çıkarılması sırasında kullanıbilecek bir kontrol listesini gösteriyor:
+Özellikle birden fazla ekibin yer aldığı büyük projelerde her grubun ve kişinin takibini yapmak önemlidir. Aşağıdaki tablo bir web sayfasının canlıya çıkarılması sırasında kullanıbilecek bir kontrol listesini gösteriyor:
 
 | Grup      | Görev                             | Sorumlu kişi / takım       | Bitiş tarihi | Durum             |
 |---        |---                                |---                         |---           |---                |
@@ -471,21 +471,21 @@ Durum sayfaları eğer hassas hata ayıklama ya da uygulama bilgileri veriyorlar
 | Dates     | Website/Product go-live time      |   |   |   |
 | Dates     | Publish the website               |   |   |   |
 
-## Yayın kontrol listesi
+## Sürüm çıkma kontrol listesi
 
-Eğer kodunuzun yeni bir sürümünü yayınlamaya hazırsanız, yayın kontrol listenizdeki herşeyi tamamlamayı unutmayın! Ortaya çıkan huzur, tekrarlanabilirlik ve güvenilirlik büyük bir nimettir.
+Eğer kodunuzun yeni bir sürümünü çıkmaya hazırsanız, kontrol listenizdeki herşeyi tamamlamayı unutmayın! Ortaya çıkan huzur, tekrarlanabilirlik ve güvenilirlik büyük bir nimettir.
 
 Sizin *zaten* bir listeniz vardır, değil mi? Eğer yoksa, aşağıdaki sizin için güzel bir başlangıç olabilir:
 
-* [ ] Sürüm yükleme işlemi ortam ne olursa olsun çalışıyor
-* [ ] Bütün ortamların iyi tanımlanmış isimleri var ve yaptıkları işlerle alakalı
+* [ ] Sürüm çıkma işlemi ortam ne olursa olsun çalışıyor
+* [ ] Bütün ortamların yaptıkları işlerle alakalı düzgün tanımlanmış isimleri var
 * [ ] Bütün ortamlar aynı teknoloji yığınına sahip
 * [ ] Bütün ortam ayarları sürüm kontrol sistemlerinde olmalı (web sunucu ayarları, CI betikleri vs.)
-* [ ] Ürün, kullanılacağı yerdeki ağlardan test edilmiştir (örneğin genel İnternet, müşteri LAN).
-* [ ] Ürün, hedeflenen tüm cihazlarla test edildi
+* [ ] Ürün kullanılacağı yerdeki ağlardan test edilmiştir (örneğin genel İnternet, müşteri LAN).
+* [ ] Ürün hedeflenen tüm cihazlarla test edildi
 * [ ] Hangi ortamda hangi sürüm olduğunu anlamanın kolay bir yolu olmalı
 * [ ] Bir sürüm şeması tanımlandı
-* [ ] Ürünün herhangi bir sürümü, kod tabanının sabit bir durumuna göre kolayca eşleştirilebilir
+* [ ] Ürünün herhangi bir sürümü, kod tabanının sabit bir durumuna kolayca eşleştirilebilir
 * [ ] Herhangi bir önceki sürüme dönüş kolaydır
 * [ ] Yedekleme sistemleri çalışıyor
 * [ ] Herhangi bir yedekten ayağı kaldırma işlemi test edildi
@@ -498,7 +498,7 @@ Sizin *zaten* bir listeniz vardır, değil mi? Eğer yoksa, aşağıdaki sizin i
 * [ ] Sunucu ortamları güncel
 * [ ] Sunucu ortamları güncelleme planı var
 * [ ] Ürüne yük testi uygulandı
-* [ ] Herhangi bir ortamı diğer bir ortama kopyalama işlemi var (Örneğin, canlı ortamı QA ortamına kopyalayıp canlıda olan hatayı oluşturma)
+* [ ] Herhangi bir ortamı diğer bir ortama kopyalama işlemi var (Örneğin, canlıda olan hatayı oluşturmak için canlı ortamı QA ortamına kopyalayabilme)
 * [ ] Tekrar eden bütün sürüm işlemleri otomatize edilmiş
 
 # Dikkat edilmesi gereken sorular
