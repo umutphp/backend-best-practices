@@ -5,55 +5,55 @@ Arka uçta örnek yöntemler
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [Belgenin çevirileri](#belgenin-%C3%A7evirileri)
+- [Belgenin Çevirileri](#belgenin-%C3%A7evirileri)
 - [N Emir](#n-emir)
-- [Buradaki yönergeler için genel noktalar](#buradaki-y%C3%B6nergeler-i%C3%A7in-genel-noktalar)
-- [Geliştirme ortamını README.md dosyasında belgeleyin](#geli%C5%9Ftirme-ortam%C4%B1n%C4%B1-readmemd-dosyas%C4%B1nda-belgeleyin)
-- [Veriyi kalıcı olarak depolama](#veriyi-kal%C4%B1c%C4%B1-olarak-depolama)
-  - [Genel değerlendirmeler](#genel-de%C4%9Ferlendirmeler)
-  - [SaaS, bulutta sunucu ya da kendi sunucunuz?](#saas-bulutta-sunucu-ya-da-kendi-sunucunuz)
-  - [Kalıcı deplolama çözümleri](#kal%C4%B1c%C4%B1-deplolama-%C3%A7%C3%B6z%C3%BCmleri)
+- [Belge İçin Genel Noktalar](#belge-i%CC%87%C3%A7in-genel-noktalar)
+- [Geliştirme Ortamını README.md Dosyasında Belgeleyin](#geli%C5%9Ftirme-ortam%C4%B1n%C4%B1-readmemd-dosyas%C4%B1nda-belgeleyin)
+- [Kalıcı Veri Depolama](#kal%C4%B1c%C4%B1-veri-depolama)
+  - [Genel Değerlendirmeler](#genel-de%C4%9Ferlendirmeler)
+  - [SaaS, Bulutta Sunucu Ya Da Kendi Sunucunuz?](#saas-bulutta-sunucu-ya-da-kendi-sunucunuz)
+  - [Kalıcı Deplolama Çözümleri](#kal%C4%B1c%C4%B1-deplolama-%C3%A7%C3%B6z%C3%BCmleri)
     - [RDBMS](#rdbms)
     - [NoSQL](#nosql)
-      - [Belge tabanlı depolama çözümleri](#belge-tabanl%C4%B1-depolama-%C3%A7%C3%B6z%C3%BCmleri)
-      - [Anahtar-değer depolama çözümleri](#anahtar-de%C4%9Fer-depolama-%C3%A7%C3%B6z%C3%BCmleri)
-      - [Grafik veritabanları](#grafik-veritabanlar%C4%B1)
+      - [Belge Tabanlı Depolama Çözümleri](#belge-tabanl%C4%B1-depolama-%C3%A7%C3%B6z%C3%BCmleri)
+      - [Anahtar-değer Depolama Çözümleri](#anahtar-de%C4%9Fer-depolama-%C3%A7%C3%B6z%C3%BCmleri)
+      - [Grafik Veritabanları](#grafik-veritabanlar%C4%B1)
 - [Geliştirme Ortamları](#geli%C5%9Ftirme-ortamlar%C4%B1)
-  - [Lokal geliştirme ortamı](#lokal-geli%C5%9Ftirme-ortam%C4%B1)
-  - [CI ortamı](#ci-ortam%C4%B1)
-  - [Test ortamı](#test-ortam%C4%B1)
-  - [Canlı öncesi (Staging) ortamı](#canl%C4%B1-%C3%B6ncesi-staging-ortam%C4%B1)
+  - [Lokal Geliştirme Ortamı](#lokal-geli%C5%9Ftirme-ortam%C4%B1)
+  - [CI Ortamı](#ci-ortam%C4%B1)
+  - [Test Ortamı](#test-ortam%C4%B1)
+  - [Canlı Öncesi (Staging) Ortamı](#canl%C4%B1-%C3%B6ncesi-staging-ortam%C4%B1)
   - [Canlı](#canl%C4%B1)
 - [Malzeme Listesi](#malzeme-listesi)
 - [Güvenlik](#g%C3%BCvenlik)
   - [Docker](#docker)
-  - [Kimlik bilgileri](#kimlik-bilgileri)
-  - [Gizli veriler](#gizli-veriler)
+  - [Kimlik Bilgileri](#kimlik-bilgileri)
+  - [Gizli Veriler](#gizli-veriler)
   - [Giriş Kısıtlama](#giri%C5%9F-k%C4%B1s%C4%B1tlama)
   - [Kullanıcı Şifreleri Depolanması](#kullan%C4%B1c%C4%B1-%C5%9Fifreleri-depolanmas%C4%B1)
   - [Denetim Logları](#denetim-loglar%C4%B1)
-  - [Şüpheli Eylem Kısıtlama ve/veya engelleme](#%C5%9F%C3%BCpheli-eylem-k%C4%B1s%C4%B1tlama-veveya-engelleme)
+  - [Şüpheli Eylem Kısıtlama Ve/Veya Engelleme](#%C5%9F%C3%BCpheli-eylem-k%C4%B1s%C4%B1tlama-veveya-engelleme)
   - [Anonim Veriler](#anonim-veriler)
-  - [Geçici dosya depolama](#ge%C3%A7ici-dosya-depolama)
-  - [Paylaşımsız vs Paylaşımlı sunucu ortamı](#payla%C5%9F%C4%B1ms%C4%B1z-vs-payla%C5%9F%C4%B1ml%C4%B1-sunucu-ortam%C4%B1)
-- [Uygulama takibi](#uygulama-takibi)
-  - [Durum sayfası](#durum-sayfas%C4%B1)
-  - [Status sayfası formatı](#status-sayfas%C4%B1-format%C4%B1)
-    - [Düz format](#d%C3%BCz-format)
-    - [JSON format](#json-format)
-  - [HTTP durum kodları](#http-durum-kodlar%C4%B1)
-  - [Yük dengeleyici kontrolleri](#y%C3%BCk-dengeleyici-kontrolleri)
-  - [Erişim kısıtlaması](#eri%C5%9Fim-k%C4%B1s%C4%B1tlamas%C4%B1)
-- [Kontrol listesi](#kontrol-listesi)
-  - [Sorumluluk kontrol listesi](#sorumluluk-kontrol-listesi)
-  - [Yayın kontrol listesi](#yay%C4%B1n-kontrol-listesi)
-- [Dikkat edilmesi gereken sorular](#dikkat-edilmesi-gereken-sorular)
-- [Faydalı olduğu kabul edilebilir araçlar](#faydal%C4%B1-oldu%C4%9Fu-kabul-edilebilir-ara%C3%A7lar)
+  - [Geçici Dosya Depolama](#ge%C3%A7ici-dosya-depolama)
+  - [Paylaşımsız VS Paylaşımlı Sunucu Ortamı](#payla%C5%9F%C4%B1ms%C4%B1z-vs-payla%C5%9F%C4%B1ml%C4%B1-sunucu-ortam%C4%B1)
+- [Uygulama Takibi](#uygulama-takibi)
+  - [Durum Sayfası](#durum-sayfas%C4%B1)
+  - [Status Sayfası Formatı](#status-sayfas%C4%B1-format%C4%B1)
+    - [Düz Format](#d%C3%BCz-format)
+    - [JSON Formatı](#json-format%C4%B1)
+  - [HTTP Durum Kodları](#http-durum-kodlar%C4%B1)
+  - [Yük Dengeleyici Kontrolleri](#y%C3%BCk-dengeleyici-kontrolleri)
+  - [Erişim Kısıtlaması](#eri%C5%9Fim-k%C4%B1s%C4%B1tlamas%C4%B1)
+- [Kontrol Listesi](#kontrol-listesi)
+  - [Sorumluluk Kontrol Listesi](#sorumluluk-kontrol-listesi)
+  - [Sürüm Çıkma Kontrol Listesi](#s%C3%BCr%C3%BCm-%C3%A7%C4%B1kma-kontrol-listesi)
+- [Dikkat Edilmesi Gereken Sorular](#dikkat-edilmesi-gereken-sorular)
+- [Faydalı Olduğu Kabul Edilebilir Araçlar](#faydal%C4%B1-oldu%C4%9Fu-kabul-edilebilir-ara%C3%A7lar)
 - [Lisans](#lisans)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Belgenin çevirileri
+# Belgenin Çevirileri
 
 Bunlar, bu belgenin gönüllüler tarafından sağlanan çevirileridir. Herhangi bir çeviriyle ilgili yorumlarınız varsa, lütfen çevirinin sağlayıcısına başvurun.
 
@@ -68,11 +68,11 @@ Bunlar, bu belgenin gönüllüler tarafından sağlanan çevirileridir. Herhangi
 5. Paketlerle beraber bir ["Bir Yığın Malzemeden"](#malzeme-listesi) oluştur
 6. Her zaman [UTC saat dilimi](http://yellerapp.com/posts/2015-01-12-the-worst-server-setup-you-can-make.html) kullan
 
-# Buradaki yönergeler için genel noktalar
+# Belge İçin Genel Noktalar
 
 Bu belgede kendimizi belirli teknoloji yığınları veya çerçevelerle sınırlamak istemiyoruz. Farklı problemler farklı çözümler gerektirir ve bu nedenle bu yönergeler her çeşit arka uç mimarisi için geçerlidir.
 
-# Geliştirme ortamını README.md dosyasında belgeleyin
+# Geliştirme Ortamını README.md Dosyasında Belgeleyin
 
 Geliştirme/sunucu ortamının tüm bölümlerini belgeleyin. Aynı kurulum ve sürümleri tüm ortamlarda, geliştirici dizüstü bilgisayarlarından başlayarak ve canlı ortamına kadar kullanmaya çalışın. Bu tavsiye veritabanını, uygulama sunucusunu, proxy sunucusunu (nginx, Apache, ...), SDK sürümlerini, gemleri/kütüphaneleri/modülleri kapsar.
 
@@ -80,8 +80,8 @@ Kurulum işlemini mümkün olduğunca otomatize etmeye çalışın. Örneğin, [
 
 Geliştirme ortamının ilgili tüm parçalarını ve bağımlılıklarını kalıcı olarak saklamayı düşünün. Eğer ortamlarınızı Docker ile inşaa edebiliyorsanız, bunu gerçekleştirmek için [docker export](http://docs.docker.com/reference/commandline/cli/#export) kullanabilirsiniz.
 
-# Veriyi kalıcı olarak depolama
-## Genel değerlendirmeler
+# Kalıcı Veri Depolama
+## Genel Değerlendirmeler
 
 Kullandığınız veri deplolama çözümünden bağımsız olarak aklınızda tutmanız gereken bazı noktalar:
 
@@ -92,7 +92,7 @@ Kullandığınız veri deplolama çözümünden bağımsız olarak aklınızda t
 * Veri yapısı değişiklikleri için bir planınız olsun
 * Depolama sistemini sürekli izleyebildiğiniz çalışan bir gözleme yapınız olsun
 
-## SaaS, bulutta sunucu ya da kendi sunucunuz?
+## SaaS, Bulutta Sunucu Ya Da Kendi Sunucunuz?
 
 Yaptığımız çözümler için bir önemli seçim de çözümün nerde çalışacağıdır.
 
@@ -100,7 +100,7 @@ Yaptığımız çözümler için bir önemli seçim de çözümün nerde çalı�
 * Bulutta sunucu -- veritabanını SaaS'tan daha fazla ayarlamaya izin verir ve kendi sunucunuza sahip olma ile karşılaştırınca büyük olasılıkla daha ucuzdur, ama SaaS'a göre daha emek yoğun bir çözümdür.
 * Self-hosted on own hardware -- her şeye ince ayar çekilebilir ve fiziksel güvenliği yönetilebilir, ama diğer iki çözüme göre daha pahalıdır ve daha çok emek gerektirir.
 
-## Kalıcı deplolama çözümleri
+## Kalıcı Deplolama Çözümleri
 
 Bu bölüm, kalıcı depolama çözümünün türünü seçmek için bazı kılavuzlar sağlamayı amaçlamaktadır. Seçim her zaman çözülmeye çalışılan soruna göre uyarlanmalı ve bunların hiçbirinin sihirli bir değnek olmadığı unutulmamalıdır.
 
@@ -112,7 +112,7 @@ Veri ve işlem bütünlüğü büyük bir gereksinim olduğunda veya çok sayıd
 
 Yatay ölçeklemeyi beklediğinizde ve ACID kuralları gerekmediğinde bir NoSQL veritabanı seçin. Tabiki veri modelinize uygun bir sistem seçin.
 
-#### Belge tabanlı depolama çözümleri
+#### Belge Tabanlı Depolama Çözümleri
 
 İçeriğe göre veya her hangi bir koleksiyona dahil edilerek kolayca adreslenebilen ve aranabilen belgeleri saklar. Bu işlev veritabanı, depolama formatını anladığı için mümkün olabiliyor. Sadece ve sadece çok sayıda yapılandırılmış belgenin saklanması için kullanın. Dikkate değer örnekler:
 
@@ -121,14 +121,14 @@ Yatay ölçeklemeyi beklediğinizde ve ACID kuralları gerekmediğinde bir NoSQL
 
 > 9.4 sürümünden sonra PostgreSQL'in de JSON desteğine sahip olduğu için bu başlıkta değerlendirilebilir.
 
-#### Anahtar-değer depolama çözümleri
+#### Anahtar-değer Depolama Çözümleri
 
 Anahtarları ile erişilebilen değerleri veya bazen de anahtar/değer çiftlerinin gruplarını saklar. Değerleri basitçe blob olarak kabul eder, bu nedenle belge depolarının sorgulama yeteneklerini sağlamaz. Büyük boyutlara ölçeklenebilir. Dikkate değer örnekler:
 
 * Cassandra
 * Redis
 
-#### Grafik veritabanları
+#### Grafik Veritabanları
 
 Genel grafik veritabanları, bir grafiğin düğümlerini ve kenarlarını depolayıp herhangi bir düğümün komşularının indekssiz ulaşılabilmesini sağlar. En kısa yol veya çap gibi grafik benzeri sorguların çok önemli olduğu uygulamalar için kullanılabilir. Özelleşmiş grafik veritabanları veri kaydı için de kullanılabilir. Örneğin, [RDF triples](https://en.wikipedia.org/wiki/Resource_Description_Framework).
 
@@ -142,19 +142,19 @@ Bu bölüm en az kaç geliştirme ortamına sahip olmanız gerektiğini açıkla
 - [Canlı öncesi (Staging) ortamı](#canlı-oncesi-staging-ortamı)
 - [Canlı](#canlı)
 
-## Lokal geliştirme ortamı
+## Lokal Geliştirme Ortamı
 
 Bu sizin kendi geliştirme ortamınızdır. Muhtemelen paylaşılan bir dış geliştirme ortamına sahip olmamalısınız. Bunun yerine, tüm sistemin yerel olarak çalıştırılmasını mümkün kılmak için, gerekli üçüncü taraf araçların taklitlerini veya sahtelerini kullanarak çalışmanız gerekir.
 
-## CI ortamı
+## CI Ortamı
 
 CI (diğer ortamların dışında), yazılımınızın derlenmiş hallerinin çalıştığı ve otomatik testlerin her değişiklikten sonra başarı ile geçirilmesini sağlamak için kurulan ortamdır.
 
-## Test ortamı
+## Test Ortamı
 
 Bu ortam kodun olabildiğince sık dağıtıldığı ve tercihen her zaman kodun ana geliştirme dalına bağlı olduğu ortak bir ortamdır. Özellikle aktif gelişim aşamasında bu ortam zaman zaman bozulabilir. Bu önemli bir (canary environment) kanarya ortamıdır ve canlı ortama mümkün olduğu kadar benzemelidir. Kullanılan harici servislerin en az "staging" seviyesinde sürümlerinin kurulu olması gerekir.
 
-## Canlı öncesi (Staging) ortamı
+## Canlı Öncesi (Staging) Ortamı
 
 Canlı öncesi (prova da denilebilir) ortam tam olarak canlı gibi yapılandırılmalıdır. Hiç bir değişiklik ilk önce bu ortamda prova edilmeden üretim ortamına gönderilemez. Gizemli (canlı ortamda ortaya çıkan) herhangi bir sorunun burada hata ayıklaması yapılabilir.
 
@@ -189,11 +189,11 @@ Kabul edilebilir genel güvenlik kuralları şöyle olabilir:
 - Düzenli aralıklarla Docker sunucunuzu gerekli güvenlik yamalarını yaparak güncelleyin
 - Aynı ana bilgisayarda çalışan birden fazla konteynır, varsayılan olarak diğer konteynırlara ve ana bilgisayarın kendisine belli bir erişim düzeyine sahip olacaktır. Tüm ana bilgisayarları doğru şekilde emniyete alın ve minimum erişim grubuna sahip konteynırlar çalıştırın; örneğin, ihtiyaç duymadıklarında ağ erişimini engelleyin.
 
-## Kimlik bilgileri
+## Kimlik Bilgileri
 
 Kimlik bilgilerini asla genel ağ üzerinden şifrelenmemiş şekilde göndermeyin. Her zaman şifreleme kullanın (örneğin HTTPS, SSL vb.).
 
-## Gizli veriler
+## Gizli Veriler
 
 Sürüm kontrol sistemlerinde gizli olması gereken bilgileri (şifreler, SSH anahtarları vb.) asla saklamayın! Orada olduklarını unutmak çok kolaydır ve proje kaynağı birçok yere (geliştirici makineler, geliştirme test sunucuları vb.) yüklenebilir; bu da tehlikeye maruz kalma riskini gereksiz yere artırır. Ayrıca, sürüm kontrol sistemleri, dosya izinlerinin üzerine yazma konusunda çok kötü bir özelliğe sahiptir, bu nedenle, yapılandırma dosyası izinlerinizi güvence altına alsanız bile, kodunuz sürüm kontrol sisteminden alındığında izinler varsayılan olarak okunabilir ya da varsayılanın üzerine yazılabilir.
 
@@ -233,7 +233,7 @@ Bu log basit bir metin dosyası olabilir veya veritabanında saklanabilir. En az
 
 Denetim logu normal uygulama logunun bir parçası olabilir, ancak burada vurgulanan şey yalnızca belirli bir eylemin gerçekleştirilip gerçekleştirilmediğini ve kimin yaptığını günlüğe kaydetmektir. Mümkünse denetim logu kurcalamaya karşı korumalı ve doğrudan uygulama tarafından erişilebilir olmamalıdır (Örneğin, yalnızca özel bir log işlemi veya kullanıcı tarafından erişilebilir olmalıdır).
 
-## Şüpheli Eylem Kısıtlama ve/veya engelleme
+## Şüpheli Eylem Kısıtlama Ve/Veya Engelleme
 
 Bu bölüm giriş kısıtlamasının genelleştirilmesi olarak görülebilir ve uygulama bağlamında "şüpheli" kabul edilen keyfi eylemler için benzer mekanizmaları anlatıyor. Örneğin, normal kullanıcıların önemli miktarda bilgiye erişmesine izin veren, ancak kullanıcıların yalnızca bu bilgilerin küçük bir alt kümesiyle ilgilenmelerini bekleyen bir ERP sistemi, beklenen veri setlerinden çok daha hızlı veri girişimlerini sınırlayabilir. Örneğin, kullanıcıların aynı anda bir veya iki müşteride çalışması gerekiyorsa, kullanıcıların tüm müşterilerin listesini indirmelerini engelleyin. Bunun, erişimi tamamen sınırlamaktan farklı olduğunu unutmayın; kullanıcıların herhangi bir müşteri hakkında bilgi almalarına izin verilir ama aynı anda bütün müşterilerin değil. Sisteme bağlı olarak, kısıtlama yeterli olmayabilir. Örneğin, bir kişi tüm kaynaklar üzerinde tek bir istekle işlem başlattığında. O zaman tamamen kısıtlama gerekli olabilir. Tüm müşteri bilgilerini almak için bir kerede bir müşteri olmak üzere 10 saniyede 1000 istek yapmak ile ve bu bilgileri bir kerede almak için tek bir istek yapmak arasında farka dikkat edin.
 
@@ -249,11 +249,11 @@ Loglarınız hassas bilgiler içeriyorsa, loglarınızın nasıl korunduğunu ve
 
 Hassas bilgileri günlüğe kaydetmeniz gerekiyorsa, günlüğe kaydetmeden önce şifrelemeyi deneyin böylece işlemin farklı bölümleri arasında aynı değerleri tanımlayabilirsiniz.
 
-## Geçici dosya depolama
+## Geçici Dosya Depolama
 
 Uygulamanızın geçici dosyaları nerede sakladığını bildiğinizden emin olun. Genel olarak erişilebilen dizinleri (muhtemelen varsayılanıdır) `/tmp` ve` /var/tmp` gibi kullanıyorsanız, dosyalarınızı `mod 600` ile oluşturduğunuzdan emin olun, böylece sadece uygulamanızın çalıştığı sistem kullanıcısı tarafından okunabilir. Alternatif olarak, geçici dosyaları saklamak için korumalı bir dizine (sadece uygulama kullanıcısı tarafından erişilebilir dizin) sahip olabilirsiniz.
 
-## Paylaşımsız vs Paylaşımlı sunucu ortamı
+## Paylaşımsız VS Paylaşımlı Sunucu Ortamı
 
 Güvenlik tehditleri uygulamanın paylaşımlı ya da paylaşımsız sunucular üzerinde çalışmasına bağlı olarak farklılıklar gösterir. Paylaşımlı demek sunucu üzerinde başka uygulamalar da (üçüncü şahıslara ait olmasına gerek yok) çalışıyor demektir. Paylaşımlı sunucularda doğru dosya izinlerinin olması kritiktir, çünkü bir hata olması durumunda uygulama kaynak kodları, veri dosyaları, geçici dosyalar, loglar gibi bilgiler görmemesi gereken kişilere görünür olabilir. Ayrıca diğer uygulamalardaki bir güvenlik açığı sizin uygulamanızın açığa çıkmasına da sebep olabilir.
 
@@ -276,7 +276,7 @@ UNIX/Linux dosya sistemlerinde yazma izninin çok güçlü bir izin olduğunu un
 
 Bunlara ek olarak, gizli veriler bölümünde anlatıldığı gibi dosya izinleri sürüm kontrol sistemlerinde korunmayabilir. Başlangıçta siz düzgün bir şekilde ayarlamış olsanız bile checkout/update gibi komutlar dosya izinlerini değiştirebilirler. Bunun için en güzel çözümlerden biri de bir Makefile, bir betik, sürüm kontrol sisteminde bir kanca işlevi ya da bunlara benzer bir yapı ile her zaman dosya izinlerini olması gereken değerlere güncellemektir.
 
-# Uygulama takibi
+# Uygulama Takibi
 
 Uygulamanızın tam anlamıyla durumunu takip edebilmek için hem işletim sistemi seviyesinde hem de uygulamanıza özel kontroller yapmalısınız. İşletim sistemi seviyesinde yapılacak kontroller CPU, depolama, hafıza kullanımı, çalışan uygulamalar, açık portlar vs gibi kontrolleri içerir. Ancak, uygulamaya özel kontroller verilen hizmet açısından daha önemlidir. Bu kontroller "bu URL cevap veriyor mu ve HTTP 200 dönüyor mu" gibi kontrollerden başlayıp veritabanı bağlantısından veri tutarlılığına kadar genişleyebilir.
 
@@ -294,7 +294,7 @@ Uygulama, herhangi bir sayıda "alt sistem" kontrolü de uygulayabilir. Örneği
 
 Alt sistem kontrollerinden gelen bilgilerle birleştirilerek, uygulama tarafından toplu bir genel durum gösterimi sağlanmalıdır. Buradaki fikir, bir harici izleme sisteminin yalnızca bu birleştirilmiş genel bakışı izlemesidir, böylece yeni bir uygulama kontrolü eklendiğinde veya değiştirildiğinde, harici izlemenin yeniden yapılandırılması gerekmez. Dahası, geliştiriciler genel durumun alt sistem kontrollerine neyin dayandığına karar verebilecek olan kişilerdir. (örneğin, hangisi önemli hangisi değil vs).
 
-## Durum sayfası
+## Durum Sayfası
 
 Bütün durum kontrol sonuçları `/status` sayfasında aşağıdakiler gibi erişilebilir olmalı:
 
@@ -306,11 +306,11 @@ Ana `/status` sayfası bir sonraki bölümde açıklandığı gibi en azından s
 
 Performans endişelerinden dolayı, bazı alt sistem kontrolelri genel `/status` sayfasında gözardı edilebilir, örneğin kontrol sırasında sistem kaynakları çok fazla kullanılıyorsa ya da kontrolün yapılması uzun zaman alıyorsa. Bir bütün olarak düşündüğümüzde, ana `/status` sayfası çok hızlı ve sade olmalı ki çok sık çağrılması durumda (1-3 dakikada bir) sistemde her hangi bir yüke sebep olmamalı. Gözardı edilen alt sistem kontrollerinin mutlaka yukarıda bahsedildiği gibi kendine özel sayfaları olmalı. Doğal olarak bu sayfaların takip edilmesi için harici takip sistemleri gerektiği gibi ayarlanmalı. Bu durumu başka bir şekilde çözmek için, şöyle bir yaklaşım ile çözüm uygulanabilir: arkaplanda çalışan bir işlem belli bir aralıkla bu yorucu alt sistem kontrolünü yapar ve sonu kaydeder. Bu ana durum sayfanızda bu tür yüklü kontrollerin sonucunu hızlıca göstermenizi sağlar (örneğin, yapılan son kontrolün sonucunu). Bu yaklaşım eğer uygulanması çok zor değilse mutlaka uygulanmalıdır.
 
-## Status sayfası formatı
+## Status Sayfası Formatı
 
 İki çeşit format öneriyoruz - `düz` and `JSON`.
 
-### Düz format
+### Düz Format
 
 Düz formatta her satır `anahtar: değer` şeklinde bir durumu  belirtir. Anahtar alt sistem ya da kontrol ismi ve değer de durumu temsil eder. Durum değerleri şunlardan biri olabilir:
 
@@ -376,7 +376,7 @@ connection_pool: 30
 latency: 2
 ```
 
-### JSON format
+### JSON Formatı
 
 Durum sayfalarında bazen JSON formatı da tercih edilebilir, örneğin kullanılan harici sistemlerin bu format üzerinde çalışması daha kolay ise.
 
@@ -430,11 +430,11 @@ Sorunlu bir kontrol var:
 }
 ```
 
-## HTTP durum kodları
+## HTTP Durum Kodları
 
 Eğer uygulama sağlıklı ve ayakta ise, durum sayfasının cevabının HTTP kodu 200 (OK) OLMALIDIR. Bunun dışındaki durumlarda 5XX HTTP kodları DÖNÜLMELİDİR. Örneğin, 500 (Internal Server Error - Sunucu hatası) kodu kullanılabilir. İsteğe bağlı olarak, kritik olmayan WARN durumlarında HTTP 200 kodu kullanılabilir.
 
-## Yük dengeleyici kontrolleri
+## Yük Dengeleyici Kontrolleri
 
 Bazen uygulamalar yük dengeleyicelerin arkasında çalışır. Yük dengeleyiciler arkalarındaki uygulamaları basitce bir URL çağırarak kontrol ederler. Bu kontroller dengeleyicilerin bir uygulama sunucusunda sorun olması durumunda o sunucuya trafik göndermemelerini sağlar.
 
@@ -442,15 +442,15 @@ Uygulamamızın genel `/status` sayfası dengeleyicilerin kontrol URL'si olarak 
 
 Denegeleyici için hazırladığınız sayfanın URL'si `/status/health` olabilir. Kullandığınız dengeleyici çözümüne göre sayfanın formatı burada bahsettiğimiz formatlardan farklı olabilir. Örneğin bazı yük dengeleyiciler sadece HTTP kodlarına bakarlar.
 
-## Erişim kısıtlaması
+## Erişim Kısıtlaması
 
 Durum sayfaları eğer hassas hata ayıklama ya da uygulama bilgileri veriyorlarsa uygun seviyede erişim yetkilendirilmesi ile korunmalıdırlar. "HTTP basic authentication" ya da IP tabanlı kısıtlama bunun için uygundur.
 
-# Kontrol listesi
+# Kontrol Listesi
 
 Önemli işleri unutmamak için kullanabileceğiniz bazı kontrol listelerini sizin için derledik.
 
-## Sorumluluk kontrol listesi
+## Sorumluluk Kontrol Listesi
 
 Özellikle birden fazla ekibin yer aldığı büyük projelerde her grubun ve kişinin takibini yapmak önemlidir. Aşağıdaki tablo bir web sayfasının canlıya çıkarılması sırasında kullanıbilecek bir kontrol listesini gösteriyor:
 
@@ -471,7 +471,7 @@ Durum sayfaları eğer hassas hata ayıklama ya da uygulama bilgileri veriyorlar
 | Dates     | Website/Product go-live time      |   |   |   |
 | Dates     | Publish the website               |   |   |   |
 
-## Sürüm çıkma kontrol listesi
+## Sürüm Çıkma Kontrol Listesi
 
 Eğer kodunuzun yeni bir sürümünü çıkmaya hazırsanız, kontrol listenizdeki herşeyi tamamlamayı unutmayın! Ortaya çıkan huzur, tekrarlanabilirlik ve güvenilirlik büyük bir nimettir.
 
@@ -501,7 +501,7 @@ Sizin *zaten* bir listeniz vardır, değil mi? Eğer yoksa, aşağıdaki sizin i
 * [ ] Herhangi bir ortamı diğer bir ortama kopyalama işlemi var (Örneğin, canlıda olan hatayı oluşturmak için canlı ortamı QA ortamına kopyalayabilme)
 * [ ] Tekrar eden bütün sürüm işlemleri otomatize edilmiş
 
-# Dikkat edilmesi gereken sorular
+# Dikkat Edilmesi Gereken Sorular
 
 * Projenin beklenen/gerekli ömrü nedir?
 * Proje tek seferlik mi yoksa sürekli gelişme olacak mı?
@@ -510,7 +510,7 @@ Sizin *zaten* bir listeniz vardır, değil mi? Eğer yoksa, aşağıdaki sizin i
 * Canlı ortamın aksama süresi servisin değerini nasıl etkileyecek?
 * Kullandığımız teknolojiler ne kadar olgun? Geriye dönük uyumlulukları bozan önemli değişiklikler beklenebilir mi?
 
-# Faydalı olduğu kabul edilebilir araçlar
+# Faydalı Olduğu Kabul Edilebilir Araçlar
 
 * [HTTPie](https://github.com/jakubroztocil/httpie) API'leri komut satırında test etmek için harika bir araçtır. Özel başlıklara ve çerezlere geçiş yapmak kolaydır ve hatta oturum desteğine sahiptir.
 * [jq](http://stedolan.github.io/jq/) bir CLI JSON işlemcisidir. İsteğe bağlı olarak cURL'den (veya elbette HTTPie!) gelen JSON verilerine işlem yapın. API testi veya araştırması için bir başka harika araç.
