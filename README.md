@@ -12,7 +12,7 @@ Arka uçta örnek yöntemler
 - [Kalıcı Veri Depolama](#kal%C4%B1c%C4%B1-veri-depolama)
   - [Genel Değerlendirmeler](#genel-de%C4%9Ferlendirmeler)
   - [SaaS, Bulutta Sunucu Ya Da Kendi Sunucunuz?](#saas-bulutta-sunucu-ya-da-kendi-sunucunuz)
-  - [Kalıcı Deplolama Çözümleri](#kal%C4%B1c%C4%B1-deplolama-%C3%A7%C3%B6z%C3%BCmleri)
+  - [Kalıcı Depolama Çözümleri](#kal%C4%B1c%C4%B1-deplolama-%C3%A7%C3%B6z%C3%BCmleri)
     - [RDBMS](#rdbms)
     - [NoSQL](#nosql)
       - [Belge Tabanlı Depolama Çözümleri](#belge-tabanl%C4%B1-depolama-%C3%A7%C3%B6z%C3%BCmleri)
@@ -100,7 +100,7 @@ Yaptığımız çözümler için bir önemli seçim de çözümün nerde çalı�
 * Bulutta sunucu -- veritabanını SaaS'tan daha fazla ayarlamaya izin verir ve kendi sunucunuza sahip olma ile karşılaştırınca büyük olasılıkla daha ucuzdur, ama SaaS'a göre daha emek yoğun bir çözümdür.
 * Self-hosted on own hardware -- her şeye ince ayar çekilebilir ve fiziksel güvenliği yönetilebilir, ama diğer iki çözüme göre daha pahalıdır ve daha çok emek gerektirir.
 
-## Kalıcı Deplolama Çözümleri
+## Kalıcı Depolama Çözümleri
 
 Bu bölüm, kalıcı depolama çözümünün türünü seçmek için bazı kılavuzlar sağlamayı amaçlamaktadır. Seçim her zaman çözülmeye çalışılan soruna göre uyarlanmalı ve bunların hiçbirinin sihirli bir değnek olmadığı unutulmamalıdır.
 
@@ -168,7 +168,7 @@ Bu liste her derleme/build sonrası oluşan sonuç paketi içine dahil edilmeli 
 
 1. Kritik araçların ya da SDK'nın hangi versiyonları kullanıldığı
 1. Hangi bağımlılıkları dahil edildiği
-1. Sonuç pakitin global olarak benzersiz bir sürüm numarası (örneğin git commit SHA-1 numarası)
+1. Sonuç paketin global olarak benzersiz bir sürüm numarası (örneğin git commit SHA-1 numarası)
 1. Paketi oluştururken kullanılan ortam ve değişkenler
 1. Hata oluşturan eden test ve kontrollerin listesi
 
@@ -183,10 +183,10 @@ Kabul edilebilir genel güvenlik kuralları şöyle olabilir:
 
 **Docker kullanmak uygulamanızı daha güvenli yapmayacaktır.** Docker kullanıyorsanız en azından aşağıdakileri yapmayı düşünmelisiniz:
 
-- Güvenli kabul edilmeyen hiç birşey paketi Docker konteynırınızda çalıştırmayın
-- Mümkün olduğunda konteynır içinde "root" dışında normal kullanıcılar yaratın ve onlar ile çalışın
-- Düzenli aralıklarla konteynırlarınızı güncel kütüphane ve bağımlıklıkları kullanarak yeninden derleyin
-- Düzenli aralıklarla Docker sunucunuzu gerekli güvenlik yamalarını yaparak güncelleyin
+- Güvenli kabul edilmeyen hiç birşey paketi Docker konteynırınızda çalıştırmayın.
+- Mümkün olduğunda konteynır içinde "root" dışında normal kullanıcılar yaratın ve onlar ile çalışın.
+- Düzenli aralıklarla konteynırlarınızı güncel kütüphane ve bağımlıklıkları kullanarak yeninden derleyin.
+- Düzenli aralıklarla Docker sunucunuzu gerekli güvenlik yamalarını yaparak güncelleyin.
 - Aynı ana bilgisayarda çalışan birden fazla konteynır, varsayılan olarak diğer konteynırlara ve ana bilgisayarın kendisine belli bir erişim düzeyine sahip olacaktır. Tüm ana bilgisayarları doğru şekilde emniyete alın ve minimum erişim grubuna sahip konteynırlar çalıştırın; örneğin, ihtiyaç duymadıklarında ağ erişimini engelleyin.
 
 ## Kimlik Bilgileri
@@ -201,7 +201,7 @@ Muhtemelen gizli verileri yönetmenin en kolay yolu, onları ihtiyaç duyan sunu
 
 ## Giriş Kısıtlama
 
-Belli bir süre içinde kişi başına izin verilen giriş denemesi sayısına sınır koyun. Belirli sayıda başarısız denemeden sonra bir kullanıcı hesabını bir süre için kilitleyin. (Örneğin, 20 hatalı giriş denemesi sonrasında 5 dakika hesabı kitleyebilirsiniz).
+Belli bir süre içinde kişi başına izin verilen giriş denemesi sayısına sınır koyun. Belirli sayıda başarısız denemeden sonra bir kullanıcı hesabını bir süre için kilitleyin. (Örneğin, 20 hatalı giriş denemesi sonrasında 5 dakika hesabı kilitleyebilirsiniz).
 
 Bu önlemlerin amacı, kullanıcı adlarına/şifrelerine karşı kaba kuvvet saldırılarını olanaksız kılmaktır.
 
@@ -438,9 +438,9 @@ Eğer uygulama sağlıklı ve ayakta ise, durum sayfasının cevabının HTTP ko
 
 Bazen uygulamalar yük dengeleyicelerin arkasında çalışır. Yük dengeleyiciler arkalarındaki uygulamaları basitce bir URL çağırarak kontrol ederler. Bu kontroller dengeleyicilerin bir uygulama sunucusunda sorun olması durumunda o sunucuya trafik göndermemelerini sağlar.
 
-Uygulamamızın genel `/status` sayfası dengeleyicilerin kontrol URL'si olarak kullanması için oldukça uygundur. Bunun yanında sadece dengeleyicilere özel bir durum sayfası yapmak da faydalı olabilir. Bu sayfa denegeleyicinin bakışına göre durumu ifadelendirerek şekillendirilebilir. Örneğin, genel durum için oldukça kötü olarak değerlendirilen bir hata, denegeleyici için aynı mantıkla değerlendirilemeyebilir ve bu sayede sunucunun dengeleyici havuzundan çıkmaması sağlanabilir. Buna güzel bir örnek de harici servislerin hata vermesi durumudur ve bu durumda sunucu kötü durumda olarak değerlendirilip havuzdan çıkarılamaz.
+Uygulamamızın genel `/status` sayfası dengeleyicilerin kontrol URL'si olarak kullanması için oldukça uygundur. Bunun yanında sadece dengeleyicilere özel bir durum sayfası yapmak da faydalı olabilir. Bu sayfa denegeleyicinin bakışına göre durumu ifadelendirerek şekillendirilebilir. Örneğin, genel durum için oldukça kötü olarak değerlendirilen bir hata, dengeleyici için aynı mantıkla değerlendirilemeyebilir ve bu sayede sunucunun dengeleyici havuzundan çıkmaması sağlanabilir. Buna güzel bir örnek de harici servislerin hata vermesi durumudur ve bu durumda sunucu kötü durumda olarak değerlendirilip havuzdan çıkarılamaz.
 
-Denegeleyici için hazırladığınız sayfanın URL'si `/status/health` olabilir. Kullandığınız dengeleyici çözümüne göre sayfanın formatı burada bahsettiğimiz formatlardan farklı olabilir. Örneğin bazı yük dengeleyiciler sadece HTTP kodlarına bakarlar.
+Dengeleyici için hazırladığınız sayfanın URL'si `/status/health` olabilir. Kullandığınız dengeleyici çözümüne göre sayfanın formatı burada bahsettiğimiz formatlardan farklı olabilir. Örneğin bazı yük dengeleyiciler sadece HTTP kodlarına bakarlar.
 
 ## Erişim Kısıtlaması
 
