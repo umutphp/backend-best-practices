@@ -286,10 +286,10 @@ Bu bölüm, uygulama sağlığının izlenmesini kolaylaştıracak kontrollerin 
 
 Uygulama, herhangi bir sayıda "alt sistem" kontrolü de uygulayabilir. Örneğin,
 
-* veritabanı bağlantısı sağlıklı mı
-* veri bütünlüğü korunuyor mı (Örneğin, bir tablodaki kayıtlar doğru mu)
-* uygulamanın iletişimde olduğu harici servisler erişilebilir mi
-* ElasticSearch indeksleri tutarlı mı
+* veritabanı bağlantısı sağlıklı mı?
+* veri bütünlüğü korunuyor mı? (Örneğin, bir tablodaki kayıtlar doğru mu?)
+* uygulamanın iletişimde olduğu harici servisler erişilebilir mi?
+* ElasticSearch indeksleri tutarlı mı?
 * uygulama için anlamlı olan herşey
 
 Alt sistem kontrollerinden gelen bilgilerle birleştirilerek, uygulama tarafından toplu bir genel durum gösterimi sağlanmalıdır. Buradaki fikir, bir harici izleme sisteminin yalnızca bu birleştirilmiş genel bakışı izlemesidir, böylece yeni bir uygulama kontrolü eklendiğinde veya değiştirildiğinde, harici izlemenin yeniden yapılandırılması gerekmez. Dahası, geliştiriciler genel durumun alt sistem kontrollerine neyin dayandığına karar verebilecek olan kişilerdir. (örneğin, hangisi önemli hangisi değil vs).
@@ -300,7 +300,6 @@ Bütün durum kontrol sonuçları `/status` sayfasında aşağıdakiler gibi eri
 
 * `/status` - toplam durum sayfası (zorunlu)
 * `/status/subsystem1` - belli bir alt sisteme ait durum sayfası (zorunlu değil)
-* ...
 
 Ana `/status` sayfası bir sonraki bölümde açıklandığı gibi en azından sistemin genel durumunu vermelidir. Bu, ana `/status` sayfasının TÜM alt sistem kontrollerini yürütmesi ve bütün sistem durumunu bildirmesi gerektiği anlamına gelir. Genel sistem durumunun alt sistemlere göre nasıl belirlendiğine karar vermek geliştiricilere kalmıştır. Örneğin, bazı kritik olmayan alt sistemlerin `HATA` durumu genel sistem için yalnızca bir `UYARI` durumu oluşturabilir.
 
@@ -378,13 +377,13 @@ latency: 2
 
 ### JSON Formatı
 
-Durum sayfalarında bazen JSON formatı da tercih edilebilir, örneğin kullanılan harici sistemlerin bu format üzerinde çalışması daha kolay ise.
+Örneğin kullanılan harici sistemlerin bu format üzerinde çalışması daha kolaysa, durum sayfalarında bazen JSON formatı da tercih edilebilir.
 
 Durum değerleri aynı yukarıdaki gibi olmalıdır - `OK`, `WARN Mesaj` ve `ERROR Mesaj`.
 
 Düz formatta olduğu gibi `status` anahtarı JSON nesnesinin ana elemanının hemen altında olmalı. Alt sistemler ise zorunlu `status` anahtarına sahip iç nesleler olarak ana nesnenin içine gömülmelidir. Aşağıdaki örnekleri inceleyebilirsiniz:
 
-Herşey sorunsuz ise ise:
+Herşey sorunsuz ise:
 
 ```json
 {
